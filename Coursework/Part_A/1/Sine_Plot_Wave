@@ -6,6 +6,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <math.h>
 
 
 
@@ -93,7 +94,23 @@ int main()
 
 	/*ADDITONAL STUFF GOES UNDER HERE */
 
+	{
+		int t, sr, offt, offs;
+		float s;
 
+		offt = 39;
+		offs = 58;
+
+		for (t = 0; t < 720; t + 4)
+		{
+			s = 10 * sin(t);
+			sr = roundf(s);
+
+			numbers[offt + (t/4)][offs - sr][0] = 255;
+			numbers[offt + (t/4)][offs - sr][1] = 0;
+			numbers[offt + (t/4)][offs - sr][2] = 0;
+		}
+	}
 
 
 
@@ -138,7 +155,3 @@ int main()
 
 	fclose(pfile);
 }
-
-
-
-
