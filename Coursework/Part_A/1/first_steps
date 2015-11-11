@@ -1,6 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #define height 4
-#define width 6              /*Set the height, width and colour depth up here...*/
+#define width 6              /* Set the height, width and colour depth up here...*/
 #define colour 15
 
 
@@ -12,7 +12,7 @@
 
 int main()
 {
-	
+
 	int numbers[height][width][3];              /* Initialising variables and writing top entries to the file...*/
 	int x = 0;
 	int y = 0;
@@ -25,7 +25,7 @@ int main()
 	fprintf(pfile, "%d %d\n", width, height);
 	fprintf(pfile, "%d\n", colour);
 
-	
+
 
 
 	int i, j, z;                    /* Setting all the values of the array i = Y axis j = X axis z = Colour type (RGB)*/
@@ -41,22 +41,23 @@ int main()
 		}
 	}
 
+	numbers[2][3][2] = 15;
 
-
-	int a, b, c;                         /* Drawing the array in the console and writing the same data to the 
+	int a, b, c;                         /* Drawing the array in the console and writing the same data to the
 										 .ppm file...*/
 	for (a = 0; a < height; a++)
 	{
 		for (b = 0; b < width; b++)
-		{                                                     /*Could you check this shows in IrFanView? */
+		{                                                    
 			for (c = 0; c < 3; c++)
 			{
 				printf("%d ", numbers[a][b][c]);
 				fprintf(pfile, "%d", numbers[a][b][c]);
-
+				fprintf(pfile, " ");
 			} printf("   "); fprintf(pfile, "   ");
 		} printf("\n\n"); fprintf(pfile, "\n\n");
 	}	                                                 /*The file can be found here  \Visual Studio 2015\Projects\ProjectName\ProjectName\myimage.ppm*/
+
 
 	printf("Made Changes! Here is the array...\n\n\n");
 
