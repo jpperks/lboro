@@ -5,14 +5,15 @@
 
 
 #include <stdio.h>
-#include <string.h>
 #include <math.h>
-
+#define PI 3.14159265
 
 
 
 int main()
 {
+
+
 
 	int numbers[height][width][3];              /* Initialising variables and writing top entries to the file...*/
 
@@ -79,7 +80,7 @@ int main()
 	/*Set X Axis Centre Line*/
 
 	{
-		int x, w;           /*x = x axis level, w = axis line width (2px)*/
+		int x;           /*x = x axis level*/
 
 		for (x = 37; x < 219; x++)
 		{
@@ -91,44 +92,67 @@ int main()
 
 	}
 
+	/*Y Axis Ticks*/
+
+	{
+		int x;
+		for (x = 35; x < 37; x++)        /*  '1' value Tick   */
+		{
+			numbers[8][x][0] = 255;
+			numbers[8][x][1] = 255;
+			numbers[8][x][2] = 255;
+		}
+	}
+
+	{
+		int x;
+		for (x = 35; x < 37; x++)        /*  '0.5' value Tick   */
+		{
+			numbers[58][x][0] = 255;
+			numbers[58][x][1] = 255;
+			numbers[58][x][2] = 255;
+		}
+	}
+
+	{
+		int x;
+		for (x = 35; x < 37; x++)        /*  '-1' value Tick   */
+		{
+			numbers[108][x][0] = 255;
+			numbers[108][x][1] = 255;
+			numbers[108][x][2] = 255;
+		}
+	}
 
 	/*ADDITONAL STUFF GOES UNDER HERE */
 
+
 	{
-		int t, sr, offt, offs;
-		float s;
+		int t = 0;
+		int sr, offt, offs;
+		double val;
+
+		val = PI / 180;
+
+		
 
 		offt = 39;
 		offs = 58;
 
-		for (t = 0; t < 720; t + 4)
+		printf("I made it here");
+
+
+		while (t <= 330)
 		{
-			s = 10 * sin(t);
-			sr = roundf(s);
-
-			numbers[offt + (t/4)][offs - sr][0] = 255;
-			numbers[offt + (t/4)][offs - sr][1] = 0;
-			numbers[offt + (t/4)][offs - sr][2] = 0;
+			t = t + 4;
+			
+			sr = roundf(10 * sin(t*val));
+			numbers[offt + (t / 4)][offs - sr][0] = 255;
+			numbers[offt + (t / 4)][offs - sr][1] = 0;
+			numbers[offt + (t / 4)][offs - sr][2] = 0;
 		}
+
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
