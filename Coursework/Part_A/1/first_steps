@@ -45,9 +45,9 @@ int main()
 	{
 		int y, w;           /*y = y axis level, w = axis line width (2px)*/
 
-		for (y = 9; y < 107; y++)
+		for (y = 8; y < 109; y++)
 		{
-			for (w = 19; w < 21; w++)
+			for (w = 37; w < 39; w++)
 			{
 				numbers[y][w][0] = 255;
 				numbers[y][w][1] = 255;
@@ -63,9 +63,9 @@ int main()
 	{
 		int x, w;           /*x = x axis level, w = axis line width (2px)*/
 
-		for (x = 19; x < 246; x++)
+		for (x = 37; x < 219; x++)
 		{
-			for (w = 107; w < 109; w++)
+			for (w = 109; w < 111; w++)
 			{
 				numbers[w][x][0] = 255;
 				numbers[w][x][1] = 255;
@@ -74,27 +74,48 @@ int main()
 		}
 
 	}
-	
+
 	/*Set X Axis Centre Line*/
 
 	{
 		int x, w;           /*x = x axis level, w = axis line width (2px)*/
 
-		for (x = 19; x < 246; x++)
+		for (x = 37; x < 219; x++)
 		{
 
-				numbers[60][x][0] = 255;
-				numbers[60][x][1] = 255;
-				numbers[60][x][2] = 255;
+			numbers[58][x][0] = 255;
+			numbers[58][x][1] = 255;
+			numbers[58][x][2] = 255;
 		}
 
 	}
 
 
+	/*ADDITONAL STUFF GOES UNDER HERE */
 
 
-	 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/*ADDITIONAL STUFF ENDS HERE*/
 
 
 
@@ -117,3 +138,7 @@ int main()
 
 	fclose(pfile);
 }
+
+
+
+
