@@ -1,0 +1,144 @@
+#define _CRT_SECURE_NO_WARNINGS
+#define height 128
+#define width 256              /* Set the height, width and colour depth up here...*/
+#define colour 255
+
+
+#include <stdio.h>
+#include <string.h>
+
+
+
+
+int main()
+{
+
+	int numbers[height][width][3];              /* Initialising variables and writing top entries to the file...*/
+
+
+	FILE *pfile = NULL;
+	pfile = fopen("myimage.ppm", "w");
+	fprintf(pfile, "P3\n");
+	fprintf(pfile, "# myimage.ppm\n");
+	fprintf(pfile, "%d %d\n", width, height);
+	fprintf(pfile, "%d\n", colour);
+
+
+
+
+	int i, j, z;                    /* Setting all the values of the array i = Y axis j = X axis z = Colour type (RGB)*/
+
+	for (i = 0; i < height; i++)
+	{
+		for (j = 0; j < width; j++)
+		{
+			for (z = 0; z < 3; z++)
+			{
+				numbers[i][j][z] = 0;
+			}
+		}
+	}
+
+
+	/*Set Y Axis Line*/
+
+	{
+		int y, w;           /*y = y axis level, w = axis line width (2px)*/
+
+		for (y = 8; y < 109; y++)
+		{
+			for (w = 37; w < 39; w++)
+			{
+				numbers[y][w][0] = 255;
+				numbers[y][w][1] = 255;
+				numbers[y][w][2] = 255;
+			}
+		}
+
+	}
+
+
+	/*Set X Axis Line*/
+
+	{
+		int x, w;           /*x = x axis level, w = axis line width (2px)*/
+
+		for (x = 37; x < 219; x++)
+		{
+			for (w = 109; w < 111; w++)
+			{
+				numbers[w][x][0] = 255;
+				numbers[w][x][1] = 255;
+				numbers[w][x][2] = 255;
+			}
+		}
+
+	}
+
+	/*Set X Axis Centre Line*/
+
+	{
+		int x, w;           /*x = x axis level, w = axis line width (2px)*/
+
+		for (x = 37; x < 219; x++)
+		{
+
+			numbers[58][x][0] = 255;
+			numbers[58][x][1] = 255;
+			numbers[58][x][2] = 255;
+		}
+
+	}
+
+
+	/*ADDITONAL STUFF GOES UNDER HERE */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/*ADDITIONAL STUFF ENDS HERE*/
+
+
+
+	int a, b, c;                         /* Drawing the array in the console and writing the same data to the
+										 .ppm file...*/
+	for (a = 0; a < height; a++)
+	{
+		for (b = 0; b < width; b++)
+		{
+			for (c = 0; c < 3; c++)
+			{
+				fprintf(pfile, "%d", numbers[a][b][c]);
+				fprintf(pfile, " ");
+			}fprintf(pfile, "   ");
+		}fprintf(pfile, "\n\n");
+	}	                                                 /*The file can be found here  \Visual Studio 2015\Projects\ProjectName\ProjectName\myimage.ppm*/
+
+
+	printf("Made Changes! \n\n\n");
+
+	fclose(pfile);
+}
+
+
+
+
