@@ -78,7 +78,7 @@ int main()
 	/*Set X Axis Centre Line*/
 
 	{
-		int x, w;           /*x = x axis level, w = axis line width (2px)*/
+		int x;           /*x = x axis level*/
 
 		for (x = 37; x < 219; x++)
 		{
