@@ -128,7 +128,7 @@ int main()
 
 
 	{
-		int t = 0;
+		int t = 1;
 		int sr, offt, offs;
 		double val;
 
@@ -139,17 +139,16 @@ int main()
 		offt = 39;
 		offs = 58;
 
-		printf("I made it here");
-
-
-		while (t <= 330)
+		while (t <= 720)
 		{
-			t = t + 4;
 			
-			sr = roundf(10 * sin(t*val));
-			numbers[offt + (t / 4)][offs - sr][0] = 255;
-			numbers[offt + (t / 4)][offs - sr][1] = 0;
-			numbers[offt + (t / 4)][offs - sr][2] = 0;
+			
+			sr = roundf(40 * sin(t*val));
+			numbers[offs - sr][offt + (t / 4)][0] = 255;
+			numbers[offs - sr][offt + (t / 4)][1] = 0;
+			numbers[offs - sr][offt + (t / 4)][2] = 0;
+
+			t = t + 4;
 		}
 
 	}
