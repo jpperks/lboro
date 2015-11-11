@@ -14,9 +14,6 @@ int main()
 {
 
 	int numbers[height][width][3];              /* Initialising variables and writing top entries to the file...*/
-	int x = 0;
-	int y = 0;
-	int w = 0;
 
 	FILE *pfile = NULL;
 	pfile = fopen("myimage.ppm", "w");
