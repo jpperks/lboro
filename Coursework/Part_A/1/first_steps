@@ -1,7 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
-#define height 4
-#define width 6              /* Set the height, width and colour depth up here...*/
-#define colour 15
+#define height 128
+#define width 256              /* Set the height, width and colour depth up here...*/
+#define colour 255
 
 
 #include <stdio.h>
@@ -14,6 +14,7 @@ int main()
 {
 
 	int numbers[height][width][3];              /* Initialising variables and writing top entries to the file...*/
+
 
 	FILE *pfile = NULL;
 	pfile = fopen("myimage.ppm", "w");
@@ -38,25 +39,81 @@ int main()
 		}
 	}
 
-	numbers[2][3][2] = 15;
+
+	/*Set Y Axis Line*/
+
+	{
+		int y, w;           /*y = y axis level, w = axis line width (2px)*/
+
+		for (y = 9; y < 107; y++)
+		{
+			for (w = 19; w < 21; w++)
+			{
+				numbers[y][w][0] = 255;
+				numbers[y][w][1] = 255;
+				numbers[y][w][2] = 255;
+			}
+		}
+
+	}
+
+
+	/*Set X Axis Line*/
+
+	{
+		int x, w;           /*x = x axis level, w = axis line width (2px)*/
+
+		for (x = 19; x < 246; x++)
+		{
+			for (w = 107; w < 109; w++)
+			{
+				numbers[w][x][0] = 255;
+				numbers[w][x][1] = 255;
+				numbers[w][x][2] = 255;
+			}
+		}
+
+	}
+	
+	/*Set X Axis Centre Line*/
+
+	{
+		int x, w;           /*x = x axis level, w = axis line width (2px)*/
+
+		for (x = 19; x < 246; x++)
+		{
+
+				numbers[60][x][0] = 255;
+				numbers[60][x][1] = 255;
+				numbers[60][x][2] = 255;
+		}
+
+	}
+
+
+
+
+	 
+
+
+
 
 	int a, b, c;                         /* Drawing the array in the console and writing the same data to the
 										 .ppm file...*/
 	for (a = 0; a < height; a++)
 	{
 		for (b = 0; b < width; b++)
-		{                                                    
+		{
 			for (c = 0; c < 3; c++)
 			{
-				printf("%d ", numbers[a][b][c]);
 				fprintf(pfile, "%d", numbers[a][b][c]);
 				fprintf(pfile, " ");
-			} printf("   "); fprintf(pfile, "   ");
-		} printf("\n\n"); fprintf(pfile, "\n\n");
+			}fprintf(pfile, "   ");
+		}fprintf(pfile, "\n\n");
 	}	                                                 /*The file can be found here  \Visual Studio 2015\Projects\ProjectName\ProjectName\myimage.ppm*/
 
 
-	printf("Made Changes! Here is the array...\n\n\n");
+	printf("Made Changes! \n\n\n");
 
 	fclose(pfile);
 }
