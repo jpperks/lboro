@@ -1,0 +1,29 @@
+{
+		int t = 1;
+		int s, offt, offs, count, inp, ap;
+		double val;
+		ap = 40; /*amplitude*/
+		val = PI / 180; /*radians to degrees conversion*/
+		offt = 39; /*offset in the x direction*/
+		offs = 58; /*offeset in the y direction*/
+
+		printf("How many sine waves of acuracy do you want? ");
+		scanf("%d/n", &inp);
+		
+		while (t <= 720)
+		{
+			count = 1;
+			s = 0;
+			while (count <= (2 * inp) - 1); /*work out what s needs to be*/
+			{
+				s = (ap / count) * (sin(count*t*val)) + s;
+				count = count + 2;
+			}
+			numbers[offs - s][offt + (t / 4)][0] = 255;
+			numbers[offs - s][offt + (t / 4)][1] = 0;
+			numbers[offs - s][offt + (t / 4)][2] = 0;
+			printf("got yey far");
+			t = t + 4;
+		}
+
+	}
