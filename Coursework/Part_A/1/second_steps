@@ -1,0 +1,303 @@
+#define _CRT_SECURE_NO_WARNINGS
+#define height 128
+#define width 256              /* Set the height, width and colour depth up here...*/
+#define colour 255
+#pragma warning ( disable : 4244 )
+
+#include <stdio.h>
+#include <math.h>
+#define PI 3.14159265
+
+
+
+int main()
+{
+	char d = 'r';
+	do
+	{
+
+		if (d == 'r' || d == 'R')
+		{
+			char d = 'x';
+			//=============================================================
+			//                                                            
+			//           SET PPM FILE HEADER AND ARRAY TO '0'                    
+			//
+			//=============================================================
+
+
+
+
+			int numbers[height][width][3];              /* Initialising variables and writing top entries to the file...*/
+
+
+			FILE *pfile = NULL;
+
+
+			if ((pfile = fopen("myimage.ppm", "w")) == NULL)
+			{
+				printf("\nThere was a problem opening '%s', please contact support.", "myimage.ppm");
+				return -1;
+			}
+
+
+			fprintf(pfile, "P3\n");
+			fprintf(pfile, "# myimage.ppm\n");
+			fprintf(pfile, "%d %d\n", width, height);
+			fprintf(pfile, "%d\n", colour);
+
+
+
+
+			int i, j, z;                    /* Setting all the values of the array i = Y axis j = X axis z = Colour type (RGB)*/
+
+			for (i = 0; i < height; i++)
+			{
+				for (j = 0; j < width; j++)
+				{
+					for (z = 0; z < 3; z++)
+					{
+						numbers[i][j][z] = 0;
+					}
+				}
+			}
+
+			//=============================================================
+			//                                                            
+			//                      DRAW AXIS LINES                     
+			//
+			//=============================================================
+
+
+
+			/*Set Y Axis Line*/
+
+			{
+				int y, w;           /*y = y axis level, w = axis line width (2px)*/
+
+				for (y = 8; y < 109; y++)
+				{
+					for (w = 37; w < 39; w++)
+					{
+						numbers[y][w][0] = 255;
+						numbers[y][w][1] = 255;
+						numbers[y][w][2] = 255;
+					}
+				}
+
+			}
+
+
+			/*Set X Axis Line*/
+
+			{
+				int x, w;           /*x = x axis level, w = axis line width (2px)*/
+
+				for (x = 37; x < 219; x++)
+				{
+					for (w = 109; w < 111; w++)
+					{
+						numbers[w][x][0] = 255;
+						numbers[w][x][1] = 255;
+						numbers[w][x][2] = 255;
+					}
+				}
+
+			}
+
+			/*Set X Axis Centre Line*/
+
+			{
+				int x;           /*x = x axis level*/
+
+				for (x = 39; x < 219; x++)
+				{
+
+					numbers[58][x][0] = 168;
+					numbers[58][x][1] = 177;
+					numbers[58][x][2] = 181;
+				}
+
+			}
+
+
+
+			//=============================================================
+			//                                                            
+			//                     DRAW AXIS TICKS                     
+			//
+			//=============================================================
+
+
+
+			/*Y Axis Ticks*/
+
+			{
+				int x;
+				for (x = 35; x < 37; x++)
+				{
+					numbers[19][x][0] = 255; //====================
+					numbers[19][x][1] = 255; // '1' Value Tick
+					numbers[19][x][2] = 255; //====================
+					numbers[58][x][0] = 255; //====================
+					numbers[58][x][1] = 255; // '0.0' value Tick
+					numbers[58][x][2] = 255; //====================
+					numbers[97][x][0] = 255; //====================
+					numbers[97][x][1] = 255; // '-1.0' value Tick
+					numbers[97][x][2] = 255; //====================
+				}
+			}
+
+
+			/*X Axis Ticks */
+
+			{
+				int y;
+				for (y = 111; y < 113; y++)
+				{
+					numbers[y][39][0] = 255;  //========================
+					numbers[y][39][1] = 255;  // '0 deg' value Tick
+					numbers[y][39][2] = 255;  //========================
+					numbers[y][83][0] = 255;  //========================
+					numbers[y][83][1] = 255;  // '180 deg' value Tick
+					numbers[y][83][2] = 255;  //========================
+					numbers[y][128][0] = 255; //========================
+					numbers[y][128][1] = 255; // '360 deg' value Tick
+					numbers[y][128][2] = 255; //========================
+					numbers[y][173][0] = 255; //========================
+					numbers[y][173][1] = 255; // '540 deg' value Tick
+					numbers[y][173][2] = 255; //========================
+					numbers[y][218][0] = 255; //========================
+					numbers[y][218][1] = 255; // '720 deg' value Tick
+					numbers[y][218][2] = 255; //========================
+				}
+			}
+
+			//=============================================================
+			//                                                            
+			//                       Y AXIS NUMBERS             
+			//
+			//=============================================================
+
+
+			/*  #1.0  */
+
+			{
+				int c;
+				for (c = 0; c < 3; c++)
+				{
+					// #1
+					numbers[15][26][c] = 171;
+					numbers[16][26][c] = 171;
+					numbers[17][26][c] = 171;
+					numbers[18][26][c] = 171;
+					// .
+					numbers[18][28][c] = 171;
+					// #0
+					numbers[15][30][c] = 171;
+					numbers[15][31][c] = 171;
+					numbers[15][32][c] = 171;
+					numbers[16][30][c] = 171;
+					numbers[17][30][c] = 171;
+					numbers[18][30][c] = 171;
+					numbers[16][32][c] = 171;
+					numbers[17][32][c] = 171;
+					numbers[18][32][c] = 171;
+					numbers[18][30][c] = 171;
+					numbers[18][31][c] = 171;
+					numbers[18][32][c] = 171;
+				}
+			}
+
+
+
+
+
+
+
+
+
+
+
+
+			/*ADDITONAL STUFF GOES UNDER HERE */
+
+
+			{
+				int t = 0;
+				int offt, offs, inp, ap, j, z;
+				double val;
+				ap = 40; /*amplitude*/
+				val = PI / 180; /*radians to degrees conversion*/
+				offt = 39; /*offset in the x direction*/
+				offs = 58; /*offeset in the y direction*/
+				int count = 1;
+				printf("How many sine waves of acuracy do you want? ");
+				scanf("%d/n", &inp);
+
+				while (inp < 0 || inp > 100)
+				{
+					printf("\nNumber must be between 1 and 100! Try again. ");
+					scanf("%d/n", &inp);
+
+				}
+
+
+				int s = 0;
+				j = ((2 * inp) - 1);
+
+
+				for (t = 0; t < 720; t++)
+				{
+
+					s = 0;
+
+					for (count = 1; count <= j; count += 2)
+					{
+						s = ((ap / count) * (sin(count*t*val))) + s;
+					}
+
+					z = offs - s;
+					s = roundf(s);
+
+					numbers[z][offt + (t / 4)][0] = 255;
+					numbers[z][offt + (t / 4)][1] = 0;
+					numbers[z][offt + (t / 4)][2] = 0;
+				}
+			}
+
+
+
+			/*ADDITIONAL STUFF ENDS HERE*/
+
+
+
+			int a, b, c;                         /* Drawing the array in the console and writing the same data to the
+												 .ppm file...*/
+			for (a = 0; a < height; a++)
+			{
+				for (b = 0; b < width; b++)
+				{
+					for (c = 0; c < 3; c++)
+					{
+						fprintf(pfile, "%d", numbers[a][b][c]);
+						fprintf(pfile, " ");
+					}fprintf(pfile, "   ");
+				}fprintf(pfile, "\n\n");
+			}	                                                 /*The file can be found here  \Visual Studio 2015\Projects\ProjectName\ProjectName\myimage.ppm*/
+
+
+			printf("\nMade Changes! Look for 'myimage.pmm' in the project folder.\n\n");
+			fclose(pfile);
+		}
+		
+		printf("Press [R] to restart or any key to exit...\n\n\n\n");
+		d = getch();
+		
+
+	} while (d == 'x'|| d == 'r' || d == 'R');
+
+	printf("\n\n");
+	printf("Goodbye! ");
+	exit();
+}
