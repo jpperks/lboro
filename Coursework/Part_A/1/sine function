@@ -1,7 +1,6 @@
 {
 		int t = 1;
 		int offt, offs,inp,ap,j,z;
-		int i = 0;
 		double val;
 		ap = 40; /*amplitude*/
 		val = PI / 180; /*radians to degrees conversion*/
