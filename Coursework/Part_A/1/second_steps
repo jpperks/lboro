@@ -232,7 +232,7 @@ int main()
 				offt = 39; /*offset in the x direction*/
 				offs = 58; /*offeset in the y direction*/
 				int count = 1;
-				printf("How many sine waves of acuracy do you want? ");
+				printf("How many sine waves of accuracy do you want? ");
 				scanf("%d/n", &inp);
 
 				while (inp < 0 || inp > 100)
