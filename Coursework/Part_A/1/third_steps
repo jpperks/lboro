@@ -178,8 +178,8 @@ int main()
 			/*  #0  */
 			
 			zero(17,30);
-			zero(55,24);
-			zero(55, 30);
+			zero(56,24);
+			zero(56, 30);
 			zero(95, 30);
 
 			//=============================================================
@@ -193,7 +193,7 @@ int main()
 			ones(114, 80);
 			ones(114, 125);
 			ones(114, 127);
-			ones(114, 214);
+			ones(114, 215);
 
 
 			/*  #.  */
@@ -214,14 +214,14 @@ int main()
 			dec2(117, 171);
 			dec3(116, 173);
 			decs(117, 174);
-			dec2(114, 212);
-			dec2(114, 216);
-			dec2(114, 218);
-			decs(115, 218);
-			decs(116, 217);
-			decs(117, 216);
-			dec2(118, 216);
-			dec2(118, 218);
+			dec2(114, 213);
+			dec2(114, 217);
+			decs(114, 219);
+			decs(115, 219);
+			decs(116, 218);
+			decs(117, 217);
+			dec2(118, 217);
+			decs(118, 219);
 
 			/*  #0  */
 
@@ -246,6 +246,14 @@ int main()
 				int count = 1;
 				printf("How many sine waves of accuracy do you want? ");
 				scanf("%d/n", &inp);
+
+				/* RANDOM COLOUR GENERATOR
+				time_t t;
+				srand((unsigned) time(&t));
+				colour = rand() % 255;
+				*/
+
+
 
 				while (inp <= 0 || inp > 100)
 				{
