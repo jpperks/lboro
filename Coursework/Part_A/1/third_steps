@@ -17,6 +17,8 @@
 void zero(int, int);
 void ones(int, int);
 void decs(int, int);
+void dec2(int, int);
+void dec3(int, int);
 int numbers[height][width][3];
 
 int main()
@@ -163,23 +165,72 @@ int main()
 
 			/*  #1  */
 
-			ones(15,26);
-			ones(93, 26);
+			ones(17,26);
+			ones(95, 26);
 
 			/*  #.  */
 
-			decs(18, 28);
-			decs(56, 28);
-			decs(96, 28);
-			decs(95, 24);
-			decs(95, 23);
+			decs(21, 28);
+			decs(59, 28);
+			decs(99, 28);
+			dec2(97, 23);
 				
 			/*  #0  */
 			
-			zero(15,30);
-			zero(53,24);
-			zero(53, 30);
-			zero(93, 30);
+			zero(17,30);
+			zero(55,24);
+			zero(55, 30);
+			zero(95, 30);
+
+			//=============================================================
+			//                                                            
+			//                       X AXIS NUMBERS             
+			//
+			//=============================================================
+
+			/*  #1  */
+
+			ones(114, 80);
+			ones(114, 125);
+			ones(114, 127);
+			ones(114, 214);
+
+
+			/*  #.  */
+
+			decs(116, 83);
+			dec2(114, 123);
+			dec2(116, 123);
+			dec2(118, 123);
+			dec2(116, 128);
+			dec2(118, 128);
+			decs(117, 129);
+			dec2(114, 168);
+			dec3(114, 167);
+			decs(116, 168);
+			dec3(116, 169);
+			dec2(118, 167);
+			dec3(114, 171);
+			dec2(117, 171);
+			dec3(116, 173);
+			decs(117, 174);
+			dec2(114, 212);
+			dec2(114, 216);
+			dec2(114, 218);
+			decs(115, 218);
+			decs(116, 217);
+			decs(117, 216);
+			dec2(118, 216);
+			dec2(118, 218);
+
+			/*  #0  */
+
+			zero(114, 38);
+			zero(114, 82);
+			zero(114, 86);
+			zero(114, 131);
+			zero(114, 176);
+			zero(114, 221);
 
 			/*ADDITONAL STUFF GOES UNDER HERE */
 
@@ -259,12 +310,12 @@ int main()
 
 // Functions
 
-void zero(int y, int x)
+void zero(int y, int x)      // Calculates zero's position.
 {
 	int c = 0;
 	int y1 = 0;
 	int x1 = 0;
-
+	                                       
 	for (x1 = (x); x1 < (x + 3); x1++)
 	{
 		for (c = 0; c < 3; c++)
@@ -273,7 +324,7 @@ void zero(int y, int x)
 		}
 	} x1 = 0; c = 0;
 
-	for (y1 = (y); y1 < (y + 3); y1++)
+	for (y1 = (y); y1 < (y + 4); y1++)
 	{
 		for (c = 0; c < 3; c++)
 		{
@@ -281,7 +332,7 @@ void zero(int y, int x)
 		}
 	} y1 = 0; c = 0;
 
-	for (y1 = (y + 1); y1 < (y + 4); y1++)
+	for (y1 = (y + 1); y1 < (y + 5); y1++)
 	{
 		for (c = 0; c < 3; c++)
 		{
@@ -293,17 +344,17 @@ void zero(int y, int x)
 	{
 		for (c = 0; c < 3; c++)
 		{
-			numbers[y + 3][x1][c] = 171;
+			numbers[y + 4][x1][c] = 171;
 		}
 	} x1 = 0; c = 0;
 }
 
 
-void ones(int y, int x)
+void ones(int y, int x)           // Calculates one's position.
 {
 	int c;
 	int y1 = 0;
-	for (y1 = (y); y1 < (y + 4); y1++)
+	for (y1 = (y); y1 < (y + 5); y1++)
 	{
 		for (c = 0; c < 3; c++)
 		{
@@ -312,11 +363,34 @@ void ones(int y, int x)
 	} x = 0; y = 0; y1 = 0;
 }
 
-void decs(int y, int x)
+void decs(int y, int x)         // Calculates single decimal point position.
 {
 	int c = 0;
 	for (c = 0; c < 3; c++)
 	{
 		numbers[y][x][c] = 171;
 	}
+}
+
+void dec2(int y, int x)        // Calculates double (horizontal) decimal point position.
+{
+	int c = 0;
+	for (c = 0; c < 3; c++)
+	{
+		numbers[y][x][c] = 171;
+		numbers[y][x+1][c] = 171;
+	}
+}
+
+void dec3(int y, int x)        // Calculates triple (vertical) decimal point position.
+{
+	int c;
+	int y1 = 0;
+	for (y1 = (y); y1 < (y + 3); y1++)
+	{
+		for (c = 0; c < 3; c++)
+		{
+			numbers[y1][x][c] = 171;
+		}
+	} x = 0; y = 0; y1 = 0;
 }
