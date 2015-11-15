@@ -257,12 +257,14 @@ int main()
 				time_t e;                   // Define colour generator.
 				srand((unsigned)time(&e));  //
 				
-				while (inp <= 0 || inp > 100)
+				while (inp <= 0 || inp > 500) // Accuracy must be between 1 and 500
 				{
-					printf("\nNumber must be between 1 and 100! Try again. ");
+					printf("\nNumber must be between 1 and 500! Try again. ");
 					scanf("%d/n", &inp);
 
 				}
+
+				printf("Please Wait...");
 
 				// BUILD PREVIOUS WAVEFORMS
 
@@ -271,9 +273,9 @@ int main()
 					{
 					
 						
-						r = rand() % 200; //
-						g = rand() % 200; // Create random colour between 0 & 200 for each waveform.
-						b = rand() % 200; //
+						r = (rand() % 150) + 50; //
+						g = (rand() % 150) + 50; // Create random colour between 0 & 200 for each waveform.
+						b = (rand() % 150) + 50; //
 
 						int s = 0;
 						j = ((2 * c) - 1);
