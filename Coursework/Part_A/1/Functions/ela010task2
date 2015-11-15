@@ -1,0 +1,354 @@
+//
+// Created by Richard Marchant and Jonathan Perkins.
+// Copyright © 2015.
+//
+
+
+#define _CRT_SECURE_NO_WARNINGS // Stops VS 'scanf' errors.
+#define height 128 //
+#define width 256  // Set the height, width and colour depth up here...
+#define colour 255 //
+#pragma warning ( disable : 4244 ) // Disabled loss of data warning when rounding?
+#include <stdio.h>
+#include <math.h>
+#include <functions.h>
+#include <conio.h> // Required for quicker user input using _getch.
+#include <time.h> // Required for colour generator.
+#include <stdlib.h> // Required for colour generator.
+#define PI 3.14159265 // To convert radians to degrees.
+
+
+
+
+int main()
+{
+	char d = 'r'; // Intialise restart variable to 'r' so the program runs on launch.
+	do
+	{
+		if (d == 'r' || d == 'R')
+		{
+			char d = 'x'; // Set the restart variable back to 'x' to stop further loops.
+			//=============================================================
+			//                                                            
+			//           SET PPM FILE HEADER AND ARRAY TO '0'                    
+			//
+			//=============================================================
+
+			// Initialising variables and writing top entries to the file...
+
+			FILE *pfile = NULL;
+
+			if ((pfile = fopen("myimage.ppm", "w")) == NULL)
+			{
+				printf("\nThere was a problem opening '%s', please contact support.", "myimage.ppm");
+				return -1;
+			}
+
+			fprintf(pfile, "P3\n");
+			fprintf(pfile, "# myimage.ppm\n");
+			fprintf(pfile, "%d %d\n", width, height);
+			fprintf(pfile, "%d\n", colour);
+
+			int i, j, z;                    // Setting all the values of the array i = Y axis j = X axis z = Colour type (RGB).
+
+			for (i = 0; i < height; i++)
+			{
+				for (j = 0; j < width; j++)
+				{
+					for (z = 0; z < 3; z++)
+					{
+						numbers[i][j][z] = 0;
+					}
+				}
+			}
+
+			//=============================================================
+			//                                                            
+			//                      DRAW AXIS LINES                     
+			//
+			//=============================================================
+
+			/*Set Y Axis Line*/
+
+			{
+				int y, w;           // y = y axis level, w = axis line width (2px).
+
+				for (y = 8; y < 109; y++)
+				{
+					for (w = 37; w < 39; w++)
+					{
+						numbers[y][w][0] = 255;
+						numbers[y][w][1] = 255;
+						numbers[y][w][2] = 255;
+					}
+				}
+
+			}
+
+			/*Set X Axis Line*/
+
+			{
+				int x, w;           // x = x axis level, w = axis line width (2px).
+
+				for (x = 37; x < 219; x++)
+				{
+					for (w = 109; w < 111; w++)
+					{
+						numbers[w][x][0] = 255;
+						numbers[w][x][1] = 255;
+						numbers[w][x][2] = 255;
+					}
+				}
+
+			}
+
+			/*Set X Axis Centre Line*/
+
+			{
+				int x;           // x = x axis level.
+
+				for (x = 39; x < 219; x++)
+				{
+
+					numbers[58][x][0] = 168;
+					numbers[58][x][1] = 177;
+					numbers[58][x][2] = 181;
+				}
+
+			}
+
+			//=============================================================
+			//                                                            
+			//                     DRAW AXIS TICKS                     
+			//
+			//=============================================================
+
+			/*Y Axis Ticks*/
+
+			{
+				int x, c;
+				for (x = 35; x < 37; x++)
+				{
+					for (c = 0; c < 3; c++)
+					{
+						numbers[19][x][c] = 255; // '1.0' Value Tick
+						numbers[58][x][c] = 255; // '0.0' value Tick
+						numbers[97][x][c] = 255; // '-1.0' value Tick
+					}
+				}
+			}
+
+			/*X Axis Ticks */
+
+			{
+				int y, c;
+				for (y = 111; y < 113; y++)
+				{
+					for (c = 0; c < 3; c++)
+					{
+						numbers[y][39][c] = 255; // '0 deg' value Tick
+						numbers[y][83][c] = 255; // '180 deg' value Tick
+						numbers[y][128][c] = 255; // '360 deg' value Tick
+						numbers[y][173][c] = 255; // '540 deg' value Tick
+						numbers[y][218][c] = 255; // '720 deg' value Tick
+
+					}
+				}
+			}
+
+			//=============================================================
+			//                                                            
+			//                       Y AXIS NUMBERS             
+			//
+			//=============================================================
+
+			/*  #1  */
+
+			ones(17, 26);
+			ones(95, 26);
+
+			/*  #.  */
+
+			decs(21, 28);
+			decs(59, 28);
+			decs(99, 28);
+			dec2(97, 23);
+
+			/*  #0  */
+
+			zero(17, 30);
+			zero(56, 24);
+			zero(56, 30);
+			zero(95, 30);
+
+			//=============================================================
+			//                                                            
+			//                       X AXIS NUMBERS             
+			//
+			//=============================================================
+
+			/*  #1  */
+
+			ones(114, 80);
+			ones(114, 125);
+			ones(114, 127);
+			ones(114, 215);
+
+
+			/*  #.  */
+
+			decs(116, 83);
+			dec2(114, 123);
+			dec2(116, 123);
+			dec2(118, 123);
+			dec2(116, 128);
+			dec2(118, 128);
+			decs(117, 129);
+			dec2(114, 168);
+			dec3(114, 167);
+			decs(116, 168);
+			dec3(116, 169);
+			dec2(118, 167);
+			dec3(114, 171);
+			dec2(117, 171);
+			dec3(116, 173);
+			decs(117, 174);
+			dec2(114, 213);
+			dec2(114, 217);
+			decs(114, 219);
+			decs(115, 219);
+			decs(116, 218);
+			decs(117, 217);
+			dec2(118, 217);
+			decs(118, 219);
+
+			/*  #0  */
+
+			zero(114, 38);
+			zero(114, 82);
+			zero(114, 86);
+			zero(114, 131);
+			zero(114, 176);
+			zero(114, 221);
+
+			/*ADDITONAL STUFF GOES UNDER HERE */
+
+			//=============================================================
+			//                                                            
+			//                       WAVEFORMS         
+			//
+			//=============================================================
+
+			{
+				int t = 0;
+				int offt, offs, inp, ap, j, z, c, r, g, b;
+				double val;
+				ap = 40; // Amplitude.
+				val = PI / 180; // Radians to degrees conversion.
+				offt = 39; // Offset in the x direction.
+				offs = 58; // Offset in the y direction.
+				int count = 1;
+				printf("How many sine waves of accuracy do you want? ");
+				scanf("%d/n", &inp);
+
+				time_t e;                   // Define colour generator.
+				srand((unsigned)time(&e));  //
+
+				while (inp <= 0 || inp > 500) // Accuracy must between 0 & 500
+				{
+					printf("\nNumber must be between 1 and 100! Try again. ");
+					scanf("%d/n", &inp);
+
+				}
+
+				// BUILD PREVIOUS WAVEFORMS
+
+				{
+					for (c = inp; c > 0; c--)
+					{
+
+
+						r = rand() % 200; //
+						g = rand() % 200; // Create random colour between 0 & 200 for each waveform.
+						b = rand() % 200; //
+
+						int s = 0;
+						j = ((2 * c) - 1);
+
+						for (t = 0; t < 720; t++)
+						{
+
+							s = 0;
+
+							for (count = 1; count <= j; count += 2)
+							{
+								s = ((ap / count) * (sin(count*t*val))) + s;
+							}
+
+							z = offs - s;
+							s = roundf(s);
+
+							numbers[z][offt + (t / 4)][0] = r;
+							numbers[z][offt + (t / 4)][1] = g;
+							numbers[z][offt + (t / 4)][2] = b;
+						}
+					}
+				}
+
+				// BUILD FINAL WAVEFORM
+
+				int s = 0;
+				j = ((2 * inp) - 1);
+
+				for (t = 0; t < 720; t++)
+				{
+
+					s = 0;
+
+					for (count = 1; count <= j; count += 2)
+					{
+						s = ((ap / count) * (sin(count*t*val))) + s;
+					}
+
+					z = offs - s;
+					s = roundf(s);
+
+					numbers[z][offt + (t / 4)][0] = 245;   //
+					numbers[z][offt + (t / 4)][1] = 245;   // Final waveform is always yellow.
+					numbers[z][offt + (t / 4)][2] = 60;    //
+				}
+			}
+
+			/*ADDITIONAL STUFF ENDS HERE*/
+
+			int a, b, c;                         /* Drawing the array in the console and writing the same data to the
+												 .ppm file...*/
+			for (a = 0; a < height; a++)
+			{
+				for (b = 0; b < width; b++)
+				{
+					for (c = 0; c < 3; c++)
+					{
+						fprintf(pfile, "%d", numbers[a][b][c]);
+						fprintf(pfile, " ");
+					}fprintf(pfile, "   ");
+				}fprintf(pfile, "\n\n");
+			}	                                                 // The file can be found here...\Visual Studio 20xx\Projects\ProjectName\ProjectName\myimage.ppm
+
+			printf("\nMade Changes! Look for 'myimage.pmm' in the project folder.\n\n");
+			fclose(pfile);
+		}
+
+		printf("Press [R] to restart or any key to exit...\n\n\n\n");
+		d = _getch();
+
+	} while (d == 'x' || d == 'r' || d == 'R');
+
+	printf("\n\n");
+	printf("Goodbye! ");
+}
+
+
+
+
+
