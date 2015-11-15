@@ -12,6 +12,8 @@
 #include <stdio.h>
 #include <math.h>
 #include <conio.h> // Required for quicker user input using _getch.
+#include <time.h> // Required for colour generator.
+#include <stdlib.h> // Required for colour generator.
 #define PI 3.14159265 // To convert radians to degrees.
 
 void zero(int, int);
@@ -234,10 +236,15 @@ int main()
 
 			/*ADDITONAL STUFF GOES UNDER HERE */
 
+			//=============================================================
+			//                                                            
+			//                       WAVEFORMS         
+			//
+			//=============================================================
 
 			{
 				int t = 0;
-				int offt, offs, inp, ap, j, z;
+				int offt, offs, inp, ap, j, z, c, r, g, b;
 				double val;
 				ap = 40; // Amplitude.
 				val = PI / 180; // Radians to degrees conversion.
@@ -247,20 +254,51 @@ int main()
 				printf("How many sine waves of accuracy do you want? ");
 				scanf("%d/n", &inp);
 
-				/* RANDOM COLOUR GENERATOR
-				time_t t;
-				srand((unsigned) time(&t));
-				colour = rand() % 255;
-				*/
-
-
-
+				time_t e;                   // Define colour generator.
+				srand((unsigned)time(&e));  //
+				
 				while (inp <= 0 || inp > 100)
 				{
 					printf("\nNumber must be between 1 and 100! Try again. ");
 					scanf("%d/n", &inp);
 
 				}
+
+				// BUILD PREVIOUS WAVEFORMS
+
+				{
+					for (c = inp; c > 0; c--)
+					{
+					
+						
+						r = rand() % 200; //
+						g = rand() % 200; // Create random colour between 0 & 200 for each waveform.
+						b = rand() % 200; //
+
+						int s = 0;
+						j = ((2 * c) - 1);
+
+						for (t = 0; t < 720; t++)
+						{
+
+							s = 0;
+
+							for (count = 1; count <= j; count += 2)
+							{
+								s = ((ap / count) * (sin(count*t*val))) + s;
+							}
+
+							z = offs - s;
+							s = roundf(s);
+
+							numbers[z][offt + (t / 4)][0] = r;
+							numbers[z][offt + (t / 4)][1] = g;
+							numbers[z][offt + (t / 4)][2] = b;
+						}
+					}
+				}
+
+				// BUILD FINAL WAVEFORM
 
 				int s = 0;
 				j = ((2 * inp) - 1);
@@ -278,9 +316,9 @@ int main()
 					z = offs - s;
 					s = roundf(s);
 
-					numbers[z][offt + (t / 4)][0] = 255;
-					numbers[z][offt + (t / 4)][1] = 0;
-					numbers[z][offt + (t / 4)][2] = 0;
+					numbers[z][offt + (t / 4)][0] = 245;   //
+					numbers[z][offt + (t / 4)][1] = 245;   // Final waveform is always yellow.
+					numbers[z][offt + (t / 4)][2] = 60;    //
 				}
 			}
 
