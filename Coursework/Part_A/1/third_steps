@@ -3,10 +3,15 @@
 // Copyright © 2015.
 //
 
+//=============================================================
+//                                                            
+//					INCLUDES & DEFINITIONS                  
+//
+//=============================================================
 
 #define _CRT_SECURE_NO_WARNINGS // Stops VS 'scanf' errors.
 #define height 128 //
-#define width 256  // Set the height, width and colour depth up here...
+#define width 256  // Set the height, width and colour depth up here.
 #define colour 255 //
 #pragma warning ( disable : 4244 ) // Disabled loss of data warning when rounding?
 #include <stdio.h>
@@ -16,12 +21,18 @@
 #include <stdlib.h> // Required for colour generator.
 #define PI 3.14159265 // To convert radians to degrees.
 
-void zero(int, int);
-void ones(int, int);
-void decs(int, int);
-void dec2(int, int);
-void dec3(int, int);
-int numbers[height][width][3];
+//=============================================================
+//                                                            
+//					  FUNTION PROTOTYPES                   
+//
+//=============================================================
+
+void zero(int, int); // Calculates zero's position.
+void ones(int, int); // Calculates one's position.
+void decs(int, int); // Calculates single decimal point position.
+void dec2(int, int); // Calculates double (horizontal) decimal point position.
+void dec3(int, int); // Calculates triple (vertical) decimal point position.
+int numbers[height][width][3]; // Our main array to store pixel values.
 
 int main()
 {
@@ -31,13 +42,12 @@ int main()
 		if (d == 'r' || d == 'R')
 		{
 			char d = 'x'; // Set the restart variable back to 'x' to stop further loops.
+
 			//=============================================================
 			//                                                            
 			//           SET PPM FILE HEADER AND ARRAY TO '0'                    
 			//
 			//=============================================================
-
-			              // Initialising variables and writing top entries to the file...
 
 			FILE *pfile = NULL;
 
@@ -52,7 +62,7 @@ int main()
 			fprintf(pfile, "%d %d\n", width, height);
 			fprintf(pfile, "%d\n", colour);
 
-			int i, j, z;                    // Setting all the values of the array i = Y axis j = X axis z = Colour type (RGB).
+			int i, j, z;     // Setting all the values of the array i = Y axis j = X axis z = Colour type (RGB).
 
 			for (i = 0; i < height; i++)
 			{
@@ -234,17 +244,15 @@ int main()
 			zero(114, 176);
 			zero(114, 221);
 
-			/*ADDITONAL STUFF GOES UNDER HERE */
-
 			//=============================================================
 			//                                                            
 			//                       WAVEFORMS         
 			//
 			//=============================================================
-
+			int inp, r1[500], g1[500], b1[500];
 			{
 				int t = 0;
-				int offt, offs, inp, ap, j, z, c, r, g, b;
+				int offt, offs, ap, j, z, c, r, g, b;
 				double val;
 				ap = 40; // Amplitude.
 				val = PI / 180; // Radians to degrees conversion.
@@ -273,16 +281,22 @@ int main()
 					{
 					
 						
+
+
 						r = (rand() % 150) + 50; //
 						g = (rand() % 150) + 50; // Create random colour between 0 & 200 for each waveform.
 						b = (rand() % 150) + 50; //
+
+						r1[c] = r;
+						g1[c] = g;
+						b1[c] = b;
+						
 
 						int s = 0;
 						j = ((2 * c) - 1);
 
 						for (t = 0; t < 720; t++)
 						{
-
 							s = 0;
 
 							for (count = 1; count <= j; count += 2)
@@ -296,6 +310,8 @@ int main()
 							numbers[z][offt + (t / 4)][0] = r;
 							numbers[z][offt + (t / 4)][1] = g;
 							numbers[z][offt + (t / 4)][2] = b;
+
+							
 						}
 					}
 				}
@@ -307,7 +323,6 @@ int main()
 
 				for (t = 0; t < 720; t++)
 				{
-
 					s = 0;
 
 					for (count = 1; count <= j; count += 2)
@@ -324,7 +339,123 @@ int main()
 				}
 			}
 
-			/*ADDITIONAL STUFF ENDS HERE*/
+			//=============================================================
+			//                                                            
+			//						 WAVEFORM KEY       
+			//
+			//=============================================================
+
+			{
+				int c; // Line pixel counter.
+
+				/*  "FIRST" */
+
+				dec2(13, 210);
+				ones(13, 209);
+				dec2(15, 210);
+
+				ones(13, 213);
+
+				ones(13, 215);
+				dec2(13, 216);
+				decs(14, 217);
+				dec2(15, 216);
+				decs(16, 216);
+				decs(17, 217);
+
+				dec2(13, 219);
+				decs(13, 221);
+				decs(14, 219);
+				decs(15, 220);
+				decs(16, 221);
+				dec2(17, 219);
+				decs(17, 221);
+
+				dec2(13, 223);
+				decs(13, 225);
+				dec3(14, 224);
+				decs(17, 224);
+
+				/* First "=" */
+
+				dec2(14, 227);
+				decs(14, 229);
+				dec2(16, 227);
+				decs(16, 229);
+
+
+				/* "FINAL" */
+
+				if (inp > 1)
+				{
+					ones(23, 208);
+					dec2(23, 209);
+					dec2(25, 209);
+
+					ones(23, 212);
+
+					ones(23, 214);
+					decs(24, 215);
+					decs(25, 215);
+					decs(25, 216);
+					decs(26, 216);
+					ones(23, 217);
+
+					dec3(24, 219);
+					decs(27, 219);
+					decs(23, 220);
+					decs(25, 220);
+					dec3(24, 221);
+					decs(27, 221);
+
+					ones(23, 223);
+					dec2(27, 224);
+
+					/*Final "="*/
+
+					dec2(24, 227);
+					decs(24, 229);
+					dec2(26, 227);
+					decs(26, 229);
+
+					/*Final Line*/
+
+					for (c = 0; c < 15; c++)
+					{
+						numbers[25][231 + c][0] = 245;
+						numbers[25][231 + c][1] = 245;
+						numbers[25][231 + c][2] = 60;
+					}
+
+					/*First Line*/
+
+					for (c = 0; c < 15; c++)
+					{
+						numbers[15][231 + c][0] = r1[1];
+						numbers[15][231 + c][1] = g1[1];
+						numbers[15][231 + c][2] = b1[1];
+					}
+				}
+				else
+				{
+					/*First Line*/
+
+					for (c = 0; c < 15; c++)
+					{
+						numbers[15][231 + c][0] = 245;
+						numbers[15][231 + c][1] = 245;
+						numbers[15][231 + c][2] = 60;
+					}
+				}
+				
+
+			}
+
+			//=============================================================
+			//                                                            
+			//               WRITE DATA FROM ARRAY TO FILE        
+			//
+			//=============================================================
 
 			int a, b, c;                         /* Drawing the array in the console and writing the same data to the
 												 .ppm file...*/
@@ -354,9 +485,11 @@ int main()
 }
 
 
-
-
-// Functions
+//=============================================================
+//                                                            
+//                      FUNCTIONS      
+//
+//=============================================================
 
 void zero(int y, int x)      // Calculates zero's position.
 {
