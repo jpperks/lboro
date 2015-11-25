@@ -1,6 +1,6 @@
 //
 // Created by Richard Marchant and Jonathan Perkins.
-// Copyright © 2015.
+// Copyright © 2015. All rights reserved.
 //
 
 //=============================================================
@@ -283,7 +283,7 @@ int main()
 
 							for (count = 1; count <= j; count += 2)
 							{
-								s = (int)(((ap / count) * (sin(count*t*val))) + s); // Generate Eqution for next waveform.
+								s = (int)(((ap / count) * (sin(count*t*val))) + s); // Generate Equation for next waveform.
 							}
 
 							z = offs - s;
@@ -306,7 +306,7 @@ int main()
 
 					for (count = 1; count <= j; count += 2)
 					{
-						s = (int)(((ap / count) * (sin(count*t*val))) + s); // Generate Eqution for next waveform.
+						s = (int)(((ap / count) * (sin(count*t*val))) + s); // Generate Equation for next waveform.
 					}
 
 					z = offs - s;
