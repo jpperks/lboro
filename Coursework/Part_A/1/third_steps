@@ -13,7 +13,6 @@
 #define height 128 //
 #define width 256  // Set the height, width and colour depth up here.
 #define colour 255 //
-#pragma warning ( disable : 4244 ) // Disabled loss of data warning when rounding?
 #include <stdio.h>
 #include <math.h>
 #include <conio.h> // Required for quicker user input using _getch.
@@ -174,24 +173,18 @@ int main()
 			//
 			//=============================================================
 
-			/*  #1  */
+			ones(17, 26); //
+			decs(21, 28); // "1.0"
+			zero(17, 30); //
 
-			ones(17,26);
-			ones(95, 26);
+			zero(56, 24); //
+			decs(59, 28); // "0.0"
+			zero(56, 30); //
 
-			/*  #.  */
-
-			decs(21, 28);
-			decs(59, 28);
-			decs(99, 28);
-			dec2(97, 23);
-				
-			/*  #0  */
-			
-			zero(17,30);
-			zero(56,24);
-			zero(56, 30);
-			zero(95, 30);
+			dec2(97, 23); //
+			ones(95, 26); // "-1.0"
+			decs(99, 28); //
+			zero(95, 30); //
 
 			//=============================================================
 			//                                                            
@@ -199,54 +192,51 @@ int main()
 			//
 			//=============================================================
 
-			/*  #1  */
+			zero(114, 38); // "0"
 
-			ones(114, 80);
-			ones(114, 125);
-			ones(114, 127);
-			ones(114, 215);
+			zero(114, 82); //
+			zero(114, 86); // "180"
+			ones(114, 80); //
+			decs(116, 83); //
 
-			/*  #.  */
+			dec2(114, 123); //
+			dec2(116, 123); //
+			dec2(118, 123); //
+			zero(114, 131); //
+			dec2(116, 128); // "360"
+			dec2(118, 128); //
+			decs(117, 129); //
+			ones(114, 125); //
+			ones(114, 127); //
 
-			decs(116, 83);
-			dec2(114, 123);
-			dec2(116, 123);
-			dec2(118, 123);
-			dec2(116, 128);
-			dec2(118, 128);
-			decs(117, 129);
-			dec2(114, 168);
-			dec3(114, 167);
-			decs(116, 168);
-			dec3(116, 169);
-			dec2(118, 167);
-			dec3(114, 171);
-			dec2(117, 171);
-			dec3(116, 173);
-			decs(117, 174);
-			dec2(114, 213);
-			dec2(114, 217);
-			decs(114, 219);
-			decs(115, 219);
-			decs(116, 218);
-			decs(117, 217);
-			dec2(118, 217);
-			decs(118, 219);
+			zero(114, 176); //
+			dec2(114, 168); //
+			dec3(114, 167); //
+			decs(116, 168); //
+			dec3(116, 169); // "540"
+			dec2(118, 167); //
+			dec3(114, 171); //
+			dec2(117, 171); //
+			dec3(116, 173); //
+			decs(117, 174); //
 
-			/*  #0  */
-
-			zero(114, 38);
-			zero(114, 82);
-			zero(114, 86);
-			zero(114, 131);
-			zero(114, 176);
-			zero(114, 221);
+			ones(114, 215); //
+			zero(114, 221); //
+			dec2(114, 213); //
+			dec2(114, 217); //
+			decs(114, 219); // "720"
+			decs(115, 219); //
+			decs(116, 218); //
+			decs(117, 217); //
+			dec2(118, 217); //
+			decs(118, 219); //
 
 			//=============================================================
 			//                                                            
 			//                       WAVEFORMS         
 			//
 			//=============================================================
+			
 			int inp, r1[500], g1[500], b1[500];
 			{
 				int t = 0;
@@ -293,14 +283,14 @@ int main()
 
 							for (count = 1; count <= j; count += 2)
 							{
-								s = ((ap / count) * (sin(count*t*val))) + s; // Generate Eqution for next waveform.
+								s = (int)(((ap / count) * (sin(count*t*val))) + s); // Generate Eqution for next waveform.
 							}
 
 							z = offs - s;
 
-							numbers[z][offt + (t / 4)][0] = r;
-							numbers[z][offt + (t / 4)][1] = g;
-							numbers[z][offt + (t / 4)][2] = b;
+							numbers[z][offt + (t / 4)][0] = r; //
+							numbers[z][offt + (t / 4)][1] = g; // Random colour for each waveform.
+							numbers[z][offt + (t / 4)][2] = b; //
 						}
 					}
 				}
@@ -316,14 +306,14 @@ int main()
 
 					for (count = 1; count <= j; count += 2)
 					{
-						s = ((ap / count) * (sin(count*t*val))) + s;
+						s = (int)(((ap / count) * (sin(count*t*val))) + s); // Generate Eqution for next waveform.
 					}
 
 					z = offs - s;
 
-					numbers[z][offt + (t / 4)][0] = 245;   //
-					numbers[z][offt + (t / 4)][1] = 245;   // Final waveform is always yellow.
-					numbers[z][offt + (t / 4)][2] = 60;    //
+					numbers[z][offt + (t / 4)][0] = 245; //
+					numbers[z][offt + (t / 4)][1] = 245; // Final waveform is always yellow.
+					numbers[z][offt + (t / 4)][2] = 60;  //
 				}
 			}
 
