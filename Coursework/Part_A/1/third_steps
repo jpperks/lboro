@@ -164,7 +164,6 @@ int main()
 						numbers[y][128][c] = 255; // '360 deg' value Tick
 						numbers[y][173][c] = 255; // '540 deg' value Tick
 						numbers[y][218][c] = 255; // '720 deg' value Tick
-
 					}
 				}
 			}
@@ -206,7 +205,6 @@ int main()
 			ones(114, 125);
 			ones(114, 127);
 			ones(114, 215);
-
 
 			/*  #.  */
 
@@ -269,7 +267,6 @@ int main()
 				{
 					printf("\nNumber must be between 1 and 500! Try again. ");
 					scanf("%d/n", &inp);
-
 				}
 
 				printf("Please Wait...");
@@ -279,10 +276,6 @@ int main()
 				{
 					for (c = inp; c > 0; c--)
 					{
-					
-						
-
-
 						r = (rand() % 150) + 50; //
 						g = (rand() % 150) + 50; // Create random colour between 0 & 200 for each waveform.
 						b = (rand() % 150) + 50; //
@@ -291,7 +284,6 @@ int main()
 						g1[c] = g;
 						b1[c] = b;
 						
-
 						int s = 0;
 						j = ((2 * c) - 1);
 
@@ -301,17 +293,14 @@ int main()
 
 							for (count = 1; count <= j; count += 2)
 							{
-								s = ((ap / count) * (sin(count*t*val))) + s;
+								s = ((ap / count) * (sin(count*t*val))) + s; // Generate Eqution for next waveform.
 							}
 
 							z = offs - s;
-							s = roundf(s);
 
 							numbers[z][offt + (t / 4)][0] = r;
 							numbers[z][offt + (t / 4)][1] = g;
 							numbers[z][offt + (t / 4)][2] = b;
-
-							
 						}
 					}
 				}
@@ -331,7 +320,6 @@ int main()
 					}
 
 					z = offs - s;
-					s = roundf(s);
 
 					numbers[z][offt + (t / 4)][0] = 245;   //
 					numbers[z][offt + (t / 4)][1] = 245;   // Final waveform is always yellow.
@@ -350,31 +338,31 @@ int main()
 
 				/*  "FIRST" */
 
-				dec2(13, 218);
-				ones(13, 217);
-				dec2(15, 218);
+				dec2(13, 218); //
+				ones(13, 217); // "F"
+				dec2(15, 218); //
 
-				ones(13, 221);
+				ones(13, 221); // "I"
 
-				ones(13, 223);
-				dec2(13, 224);
-				decs(14, 225);
-				dec2(15, 224);
-				decs(16, 224);
-				decs(17, 225);
+				ones(13, 223); //
+				dec2(13, 224); //
+				decs(14, 225); // "R"
+				dec2(15, 224); //
+				decs(16, 224); //
+				decs(17, 225); //
 
-				dec2(13, 227);
-				decs(13, 229);
-				decs(14, 227);
-				decs(15, 228);
-				decs(16, 229);
-				dec2(17, 227);
-				decs(17, 229);
+				dec2(13, 227); //
+				decs(13, 229); //
+				decs(14, 227); //
+				decs(15, 228); // "S"
+				decs(16, 229); //
+				dec2(17, 227); // 
+				decs(17, 229); //
 
-				dec2(13, 231);
-				decs(13, 233);
-				dec3(14, 232);
-				decs(17, 232);
+				dec2(13, 231); //
+				decs(13, 233); // "T"
+				dec3(14, 232); //
+				decs(17, 232); //
 
 				/* First "=" */
 
@@ -388,28 +376,28 @@ int main()
 
 				if (inp > 1)
 				{
-					ones(23, 216);
-					dec2(23, 217);
-					dec2(25, 217);
+					ones(23, 216); //
+					dec2(23, 217); // "F"
+					dec2(25, 217); //
 
-					ones(23, 220);
+					ones(23, 220); // "I"
 
-					ones(23, 222);
-					decs(24, 223);
-					decs(25, 223);
-					decs(25, 224);
-					decs(26, 224);
-					ones(23, 225);
+					ones(23, 222); //
+					decs(24, 223); //
+					decs(25, 223); // "N"
+					decs(25, 224); //
+					decs(26, 224); //
+					ones(23, 225); //
 
-					dec3(24, 227);
-					decs(27, 227);
-					decs(23, 228);
-					decs(25, 228);
-					dec3(24, 229);
-					decs(27, 229);
+					dec3(24, 227); //
+					decs(27, 227); //
+					decs(23, 228); // "A"
+					decs(25, 228); //
+					dec3(24, 229); //
+					decs(27, 229); //
 
-					ones(23, 231);
-					dec2(27, 232);
+					ones(23, 231); // "L"
+					dec2(27, 232); //
 
 					/*Final "="*/
 
@@ -422,18 +410,18 @@ int main()
 
 					for (c = 0; c < 15; c++)
 					{
-						numbers[25][239 + c][0] = 245;
-						numbers[25][239 + c][1] = 245;
-						numbers[25][239 + c][2] = 60;
+						numbers[25][239 + c][0] = 245; //
+						numbers[25][239 + c][1] = 245; // Line sample of the final waveform. This is always yellow.
+						numbers[25][239 + c][2] = 60;  //
 					}
 
 					/*First Line*/
 
 					for (c = 0; c < 15; c++)
 					{
-						numbers[15][239 + c][0] = r1[1];
-						numbers[15][239 + c][1] = g1[1];
-						numbers[15][239 + c][2] = b1[1];
+						numbers[15][239 + c][0] = r1[1]; //
+						numbers[15][239 + c][1] = g1[1]; // Line sample of the first waveform if > 1 has been displayed.
+						numbers[15][239 + c][2] = b1[1]; //
 					} c = 0;
 				} 
 				else
@@ -442,31 +430,31 @@ int main()
 
 					for (c = 0; c < 15; c++)
 					{
-						numbers[15][239 + c][0] = 245;
-						numbers[15][239 + c][1] = 245;
-						numbers[15][239 + c][2] = 60;
+						numbers[15][239 + c][0] = 245; //
+						numbers[15][239 + c][1] = 245; // Line sample of the first waveform if only 1 has been displayed.
+						numbers[15][239 + c][2] = 60;  //
 					} c = 0;
 				}
 				
 				/* "KEY"*/
 
-				ones(3, 226);
-				decs(5, 227);
-				decs(4, 228);
-				decs(3, 229);
-				decs(6, 228);
-				decs(7, 229);
+				ones(3, 226); //
+				decs(5, 227); //
+				decs(4, 228); // "K"
+				decs(3, 229); //
+				decs(6, 228); //
+				decs(7, 229); //
 
-				ones(3, 231);
-				dec2(3, 232);
-				dec2(5, 232);
-				dec2(7, 232);
+				ones(3, 231); //
+				dec2(3, 232); // "E"
+				dec2(5, 232); //
+				dec2(7, 232); //
 
-				decs(3, 235);
-				decs(4, 235);
-				dec3(5, 236);
-				decs(3, 237);
-				decs(4, 237);
+				decs(3, 235); //
+				decs(4, 235); //
+				dec3(5, 236); // "Y"
+				decs(3, 237); //
+				decs(4, 237); //
 
 				for (c = 224; c < 239; c++)
 				{
@@ -475,21 +463,20 @@ int main()
 					numbers[8][c][2] = 171;
 				} c = 0;
 
-
 				/* Outer Lines*/
 
 				for (c = 0; c < 31; c++)
 				{
-					numbers[c][210][0] = 230;
-					numbers[c][210][1] = 230;
-					numbers[c][210][2] = 230;
+					numbers[c][210][0] = 230; //
+					numbers[c][210][1] = 230; // Vertical "off-white" colour, key boundary line.
+					numbers[c][210][2] = 230; //
 				} c = 0;
 
 				for (c = 210; c < 256; c++)
 				{
-					numbers[30][c][0] = 230;
-					numbers[30][c][1] = 230;
-					numbers[30][c][2] = 230;
+					numbers[30][c][0] = 230; //
+					numbers[30][c][1] = 230; // Horizontal "off-white" colour, key boundary line.
+					numbers[30][c][2] = 230; //
 				} c = 0;
 			}
 
@@ -511,8 +498,7 @@ int main()
 						fprintf(pfile, " ");
 					}fprintf(pfile, "   ");
 				}fprintf(pfile, "\n\n");
-			}	                                                 // The file can be found here...\Visual Studio 20xx\Projects\ProjectName\ProjectName\myimage.ppm
-
+			}	                              // The file can be found here...\Visual Studio 20xx\Projects\ProjectName\ProjectName\myimage.ppm
 			printf("\nMade Changes! Look for 'myimage.pmm' in the project folder.\n\n");
 			fclose(pfile);
 		}
@@ -520,12 +506,11 @@ int main()
 		printf("Press [R] to restart or any key to exit...\n\n\n\n");
 		d = _getch();
 		
-	} while (d == 'x'|| d == 'r' || d == 'R');
+	} while (d == 'r' || d == 'R');
 
 	printf("\n\n");
 	printf("Goodbye! ");
 }
-
 
 //=============================================================
 //                                                            
@@ -571,7 +556,6 @@ void zero(int y, int x)      // Calculates zero's position.
 		}
 	} x1 = 0; c = 0;
 }
-
 
 void ones(int y, int x)           // Calculates one's position.
 {
