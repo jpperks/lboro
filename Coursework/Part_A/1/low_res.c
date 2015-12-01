@@ -3,6 +3,8 @@
 // Copyright © 2015. All rights reserved.
 //
 
+// ***************** LOW RESOLUTION VERSION *******************
+
 //=============================================================
 //                                                            
 //					INCLUDES & DEFINITIONS                  
@@ -42,11 +44,11 @@ int main()
 		{
 			char d = 'x'; // Set the restart variable back to 'x' to stop further loops.
 
-			//=============================================================
-			//                                                            
-			//           SET PPM FILE HEADER AND ARRAY TO '0'                    
-			//
-			//=============================================================
+						  //=============================================================
+						  //                                                            
+						  //           SET PPM FILE HEADER AND ARRAY TO '0'                    
+						  //
+						  //=============================================================
 
 			FILE *pfile = NULL;
 
@@ -186,11 +188,11 @@ int main()
 			decs(99, 28); //
 			zero(95, 30); //
 
-			//=============================================================
-			//                                                            
-			//                       X AXIS NUMBERS             
-			//
-			//=============================================================
+						  //=============================================================
+						  //                                                            
+						  //                       X AXIS NUMBERS             
+						  //
+						  //=============================================================
 
 			zero(114, 38); // "0"
 
@@ -231,12 +233,12 @@ int main()
 			dec2(118, 217); //
 			decs(118, 219); //
 
-			//=============================================================
-			//                                                            
-			//                       WAVEFORMS         
-			//
-			//=============================================================
-			
+							//=============================================================
+							//                                                            
+							//                       WAVEFORMS         
+							//
+							//=============================================================
+
 			int inp, r1[500], g1[500], b1[500];
 			{
 				int t = 0;
@@ -252,16 +254,48 @@ int main()
 
 				time_t e;                   // Define colour generator.
 				srand((unsigned)time(&e));  //
-				
-				while (inp <= 0 || inp > 500) // Accuracy must be between 1 and 500
+
+				while (inp <= 0 || inp > 999) // Accuracy must be between 1 and 999
 				{
-					printf("\nNumber must be between 1 and 500! Try again. ");
+					printf("\nNumber must be between 1 and 999! Try again. ");
 					scanf("%d/n", &inp);
 				}
 
-				printf("Please Wait...");
+				if (inp > 500)
+				{
+					printf("\nYikes! This might take a while...");
+				}
+				else { printf("Please Wait..."); }
 
-				// BUILD PREVIOUS WAVEFORMS
+				// BUILD PREVIOUS SINE WAVEFORMS
+
+				// BUILD PREVIOUS SINE WAVEFORMS
+
+				{
+					for (c = inp; c > 0; c--)
+					{
+						int s = 0;
+						j = ((2 * c) - 1);
+
+						for (t = 0; t < 720; t++)
+						{
+							s = 0;
+
+							for (count = 1; count <= j; count += 2)
+							{
+								s = (int)((ap / count) * (sin(count*t*val))); // Generate Equation for next waveform.
+							}
+
+							z = offs - s;
+
+							numbers[z][offt + (t / 4)][0] = 150; //
+							numbers[z][offt + (t / 4)][1] = 0;  // Colour is always dark red for each waveform.
+							numbers[z][offt + (t / 4)][2] = 0; //
+						}
+					}
+				}
+
+				// BUILD PREVIOUS SQUARE WAVEFORMS
 
 				{
 					for (c = inp; c > 0; c--)
@@ -273,7 +307,7 @@ int main()
 						r1[c] = r;
 						g1[c] = g;
 						b1[c] = b;
-						
+
 						int s = 0;
 						j = ((2 * c) - 1);
 
@@ -295,7 +329,7 @@ int main()
 					}
 				}
 
-				// BUILD FINAL WAVEFORM
+				// BUILD FINAL SQAURE WAVEFORM
 
 				int s = 0;
 				j = ((2 * inp) - 1);
@@ -326,7 +360,7 @@ int main()
 			{
 				int c; // Line pixel counter.
 
-				/*  "FIRST" */
+					   /*  "FIRST" */
 
 				dec2(13, 218); //
 				ones(13, 217); // "F"
@@ -354,7 +388,7 @@ int main()
 				dec3(14, 232); //
 				decs(17, 232); //
 
-				/* First "=" */
+							   /* First "=" */
 
 				dec2(14, 235);
 				decs(14, 237);
@@ -389,7 +423,7 @@ int main()
 					ones(23, 231); // "L"
 					dec2(27, 232); //
 
-					/*Final "="*/
+								   /*Final "="*/
 
 					dec2(24, 235);
 					decs(24, 237);
@@ -413,7 +447,7 @@ int main()
 						numbers[15][239 + c][1] = g1[1]; // Line sample of the first waveform if > 1 has been displayed.
 						numbers[15][239 + c][2] = b1[1]; //
 					} c = 0;
-				} 
+				}
 				else
 				{
 					/*First Line*/
@@ -425,7 +459,7 @@ int main()
 						numbers[15][239 + c][2] = 60;  //
 					} c = 0;
 				}
-				
+
 				/* "KEY"*/
 
 				ones(3, 226); //
@@ -492,10 +526,10 @@ int main()
 			printf("\nMade Changes! Look for 'myimage.pmm' in the project folder.\n\n");
 			fclose(pfile);
 		}
-		
+
 		printf("Press [R] to restart or any key to exit...\n\n\n\n");
 		d = _getch();
-		
+
 	} while (d == 'r' || d == 'R');
 
 	printf("\n\n");
@@ -513,7 +547,7 @@ void zero(int y, int x)      // Calculates zero's position.
 	int c = 0;
 	int y1 = 0;
 	int x1 = 0;
-	                                       
+
 	for (x1 = (x); x1 < (x + 3); x1++)
 	{
 		for (c = 0; c < 3; c++)
@@ -575,7 +609,7 @@ void dec2(int y, int x)        // Calculates double (horizontal) decimal point p
 	for (c = 0; c < 3; c++)
 	{
 		numbers[y][x][c] = 171;
-		numbers[y][x+1][c] = 171;
+		numbers[y][x + 1][c] = 171;
 	}
 }
 
