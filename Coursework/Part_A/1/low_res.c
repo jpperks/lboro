@@ -1,5 +1,5 @@
 //
-// Created by Richard Marchant and Jonathan Perkins.
+// Created by Richard Marchant (B512813) and Jonathan Perkins (B529175).
 // Copyright © 2015. All rights reserved.
 //
 
