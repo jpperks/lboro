@@ -130,7 +130,7 @@ int main()
 				}
 
 			}
-			
+
 			//=============================================================
 			//                                                            
 			//                     DRAW AXIS TICKS                     
@@ -138,22 +138,22 @@ int main()
 			//=============================================================
 
 			/*Y Axis Ticks*/
-			
+
 			{
 				int x, c;
 				for (x = 144; x < 152; x++)
 				{
 					for (c = 0; c < 3; c++)
 					{
-						numbers[76][x][c] = 255; // '1.0' Value Tick
+						numbers[72][x][c] = 255; // '1.0' Value Tick
 						numbers[232][x][c] = 255; // '0.0' value Tick
-						numbers[388][x][c] = 255; // '-1.0' value Tick
+						numbers[392][x][c] = 255; // '-1.0' value Tick
 					}
 				}
 			}
 
 			/*X Axis Ticks */
-			
+
 			{
 				int y, c;
 				for (y = 440; y < 448; y++)
@@ -174,18 +174,18 @@ int main()
 			//                       Y AXIS NUMBERS             
 			//
 			//=============================================================
-			
-			ones(68, 104); //
-			decs(84, 112); // "1.0"
-			zero(68, 120); //
 
-			zero(224, 96); //
-			decs(236, 112); // "0.0"
+			ones(64, 104);  //
+			decs(83, 113);  // "1.0"
+			zero(64, 120);  //
+
+			zero(224, 94);  //
+			decs(243, 113); // "0.0"
 			zero(224, 120); //
 
-			dec2(388, 92); //
+			dec2(390, 92);  //
 			ones(380, 104); // "-1.0"
-			decs(396, 112); //
+			decs(399, 113); //
 			zero(380, 120); //
 
 			//=============================================================
@@ -195,12 +195,10 @@ int main()
 			//=============================================================
 			/*
 			zero(114, 38); // "0"
-
 			zero(114, 82); //
 			zero(114, 86); // "180"
 			ones(114, 80); //
 			decs(116, 83); //
-
 			dec2(114, 123); //
 			dec2(116, 123); //
 			dec2(118, 123); //
@@ -210,7 +208,6 @@ int main()
 			decs(117, 129); //
 			ones(114, 125); //
 			ones(114, 127); //
-
 			zero(114, 176); //
 			dec2(114, 168); //
 			dec3(114, 167); //
@@ -221,7 +218,6 @@ int main()
 			dec2(117, 171); //
 			dec3(116, 173); //
 			decs(117, 174); //
-
 			ones(114, 215); //
 			zero(114, 221); //
 			dec2(114, 213); //
@@ -238,7 +234,7 @@ int main()
 			//                       WAVEFORMS         
 			//
 			//=============================================================
-			
+
 			int inp, r1[500], g1[500], b1[500];
 			{
 				int t = 0;
@@ -254,7 +250,7 @@ int main()
 
 				time_t e;                   // Define colour generator.
 				srand((unsigned)time(&e));  //
-				
+
 				while (inp <= 0 || inp > 999) // Accuracy must be between 1 and 999
 				{
 					printf("\nNumber must be between 1 and 999! Try again. ");
@@ -272,7 +268,7 @@ int main()
 				{
 					for (c = inp; c > 0; c--)
 					{
-						
+
 						int s = 0;
 						j = ((2 * c) - 1);
 
@@ -307,7 +303,7 @@ int main()
 						r1[c] = r;
 						g1[c] = g;
 						b1[c] = b;
-						
+
 						int s = 0;
 						j = ((2 * c) - 1);
 
@@ -358,155 +354,134 @@ int main()
 			//=============================================================
 			/*
 			{
-				int c; // Line pixel counter.
-
-				/*  "FIRST" */
+			int c; // Line pixel counter.
+			/*  "FIRST" */
 			/*
-				dec2(13, 218); //
-				ones(13, 217); // "F"
-				dec2(15, 218); //
-
-				ones(13, 221); // "I"
-
-				ones(13, 223); //
-				dec2(13, 224); //
-				decs(14, 225); // "R"
-				dec2(15, 224); //
-				decs(16, 224); //
-				decs(17, 225); //
-
-				dec2(13, 227); //
-				decs(13, 229); //
-				decs(14, 227); //
-				decs(15, 228); // "S"
-				decs(16, 229); //
-				dec2(17, 227); // 
-				decs(17, 229); //
-
-				dec2(13, 231); //
-				decs(13, 233); // "T"
-				dec3(14, 232); //
-				decs(17, 232); //
-
-				/* First "=" */
+			dec2(13, 218); //
+			ones(13, 217); // "F"
+			dec2(15, 218); //
+			ones(13, 221); // "I"
+			ones(13, 223); //
+			dec2(13, 224); //
+			decs(14, 225); // "R"
+			dec2(15, 224); //
+			decs(16, 224); //
+			decs(17, 225); //
+			dec2(13, 227); //
+			decs(13, 229); //
+			decs(14, 227); //
+			decs(15, 228); // "S"
+			decs(16, 229); //
+			dec2(17, 227); //
+			decs(17, 229); //
+			dec2(13, 231); //
+			decs(13, 233); // "T"
+			dec3(14, 232); //
+			decs(17, 232); //
+			/* First "=" */
 			/*
-				dec2(14, 235);
-				decs(14, 237);
-				dec2(16, 235);
-				decs(16, 237);
-
-
-				/* "FINAL" */
+			dec2(14, 235);
+			decs(14, 237);
+			dec2(16, 235);
+			decs(16, 237);
+			/* "FINAL" */
 			/*
-				if (inp > 1)
-				{
-					ones(23, 216); //
-					dec2(23, 217); // "F"
-					dec2(25, 217); //
-
-					ones(23, 220); // "I"
-
-					ones(23, 222); //
-					decs(24, 223); //
-					decs(25, 223); // "N"
-					decs(25, 224); //
-					decs(26, 224); //
-					ones(23, 225); //
-
-					dec3(24, 227); //
-					decs(27, 227); //
-					decs(23, 228); // "A"
-					decs(25, 228); //
-					dec3(24, 229); //
-					decs(27, 229); //
-
-					ones(23, 231); // "L"
-					dec2(27, 232); //
-
-					/*Final "="*/
+			if (inp > 1)
+			{
+			ones(23, 216); //
+			dec2(23, 217); // "F"
+			dec2(25, 217); //
+			ones(23, 220); // "I"
+			ones(23, 222); //
+			decs(24, 223); //
+			decs(25, 223); // "N"
+			decs(25, 224); //
+			decs(26, 224); //
+			ones(23, 225); //
+			dec3(24, 227); //
+			decs(27, 227); //
+			decs(23, 228); // "A"
+			decs(25, 228); //
+			dec3(24, 229); //
+			decs(27, 229); //
+			ones(23, 231); // "L"
+			dec2(27, 232); //
+			/*Final "="*/
 			/*
-					dec2(24, 235);
-					decs(24, 237);
-					dec2(26, 235);
-					decs(26, 237);
-
-					/*Final Line*/
+			dec2(24, 235);
+			decs(24, 237);
+			dec2(26, 235);
+			decs(26, 237);
+			/*Final Line*/
 			/*
-					for (c = 0; c < 15; c++)
-					{
-						numbers[25][239 + c][0] = 245; //
-						numbers[25][239 + c][1] = 245; // Line sample of the final waveform. This is always yellow.
-						numbers[25][239 + c][2] = 60;  //
-					}
-
-					/*First Line*/
+			for (c = 0; c < 15; c++)
+			{
+			numbers[25][239 + c][0] = 245; //
+			numbers[25][239 + c][1] = 245; // Line sample of the final waveform. This is always yellow.
+			numbers[25][239 + c][2] = 60;  //
+			}
+			/*First Line*/
 			/*
-					for (c = 0; c < 15; c++)
-					{
-						numbers[15][239 + c][0] = r1[1]; //
-						numbers[15][239 + c][1] = g1[1]; // Line sample of the first waveform if > 1 has been displayed.
-						numbers[15][239 + c][2] = b1[1]; //
-					} c = 0;
-				} 
-				else
-				{
-					/*First Line*/
-/*
-					for (c = 0; c < 15; c++)
-					{
-						numbers[15][239 + c][0] = 245; //
-						numbers[15][239 + c][1] = 245; // Line sample of the first waveform if only 1 has been displayed.
-						numbers[15][239 + c][2] = 60;  //
-					} c = 0;
-				}
-				
-				/* "KEY"*/
-/*
-				ones(3, 226); //
-				decs(5, 227); //
-				decs(4, 228); // "K"
-				decs(3, 229); //
-				decs(6, 228); //
-				decs(7, 229); //
-
-				ones(3, 231); //
-				dec2(3, 232); // "E"
-				dec2(5, 232); //
-				dec2(7, 232); //
-
-				decs(3, 235); //
-				decs(4, 235); //
-				dec3(5, 236); // "Y"
-				decs(3, 237); //
-				decs(4, 237); //
-
-				for (c = 224; c < 239; c++)
-				{
-					numbers[8][c][0] = 171;
-					numbers[8][c][1] = 171;
-					numbers[8][c][2] = 171;
-				} c = 0;
-
-				/* Outer Lines*/
-/*
-				for (c = 0; c < 31; c++)
-				{
-					numbers[c][210][0] = 230; //
-					numbers[c][210][1] = 230; // Vertical "off-white" colour, key boundary line.
-					numbers[c][210][2] = 230; //
-				} c = 0;
-
-				for (c = 210; c < 256; c++)
-				{
-					numbers[30][c][0] = 230; //
-					numbers[30][c][1] = 230; // Horizontal "off-white" colour, key boundary line.
-					numbers[30][c][2] = 230; //
-				} c = 0;
+			for (c = 0; c < 15; c++)
+			{
+			numbers[15][239 + c][0] = r1[1]; //
+			numbers[15][239 + c][1] = g1[1]; // Line sample of the first waveform if > 1 has been displayed.
+			numbers[15][239 + c][2] = b1[1]; //
+			} c = 0;
+			}
+			else
+			{
+			/*First Line*/
+			/*
+			for (c = 0; c < 15; c++)
+			{
+			numbers[15][239 + c][0] = 245; //
+			numbers[15][239 + c][1] = 245; // Line sample of the first waveform if only 1 has been displayed.
+			numbers[15][239 + c][2] = 60;  //
+			} c = 0;
 			}
 
+			/* "KEY"*/
+			/*
+			ones(3, 226); //
+			decs(5, 227); //
+			decs(4, 228); // "K"
+			decs(3, 229); //
+			decs(6, 228); //
+			decs(7, 229); //
+			ones(3, 231); //
+			dec2(3, 232); // "E"
+			dec2(5, 232); //
+			dec2(7, 232); //
+			decs(3, 235); //
+			decs(4, 235); //
+			dec3(5, 236); // "Y"
+			decs(3, 237); //
+			decs(4, 237); //
+			for (c = 224; c < 239; c++)
+			{
+			numbers[8][c][0] = 171;
+			numbers[8][c][1] = 171;
+			numbers[8][c][2] = 171;
+			} c = 0;
+			/* Outer Lines*/
+			/*
+			for (c = 0; c < 31; c++)
+			{
+			numbers[c][210][0] = 230; //
+			numbers[c][210][1] = 230; // Vertical "off-white" colour, key boundary line.
+			numbers[c][210][2] = 230; //
+			} c = 0;
+			for (c = 210; c < 256; c++)
+			{
+			numbers[30][c][0] = 230; //
+			numbers[30][c][1] = 230; // Horizontal "off-white" colour, key boundary line.
+			numbers[30][c][2] = 230; //
+			} c = 0;
+			}
 			//=============================================================
-			//                                                            
-			//               WRITE DATA FROM ARRAY TO FILE        
+			//
+			//               WRITE DATA FROM ARRAY TO FILE
 			//
 			//=============================================================
 			*/
@@ -526,10 +501,10 @@ int main()
 			printf("\nMade Changes! Look for 'myimage.pmm' in the project folder.\n\n");
 			fclose(pfile);
 		}
-		
+
 		printf("Press [R] to restart or any key to exit...\n\n\n\n");
 		d = _getch();
-		
+
 	} while (d == 'r' || d == 'R');
 
 	printf("\n\n");
@@ -547,36 +522,48 @@ void zero(int y, int x)      // Calculates zero's position.
 	int c = 0;
 	int y1 = 0;
 	int x1 = 0;
-	                                       
-	for (x1 = (x); x1 < (x + 12); x1++)
+	int w = 0;
+	for (x1 = (x); x1 < (x + 12); x1++) // Top
 	{
-		for (c = 0; c < 3; c++)
+		for (w = y; w < (y + 3); w++)
 		{
-			numbers[y][x1][c] = 171;
+			for (c = 0; c < 3; c++)
+			{
+				numbers[w][x1][c] = 171;
+			}
 		}
-	} x1 = 0; c = 0;
+	} w = 0; x1 = 0; c = 0;
 
-	for (y1 = (y); y1 < (y + 20); y1++)
+	for (y1 = (y); y1 < (y + 20); y1++) // Left Side
 	{
-		for (c = 0; c < 3; c++)
+		for (w = x; w < (x + 3); w++)
 		{
-			numbers[y1][x][c] = 171;
-		}
-	} y1 = 0; c = 0;
-
-	for (y1 = (y); y1 < (y + 20); y1++)
-	{
-		for (c = 0; c < 3; c++)
-		{
-			numbers[y1][x + 12][c] = 171;
+			for (c = 0; c < 3; c++)
+			{
+				numbers[y1][w][c] = 171;
+			}
 		}
 	} y1 = 0; c = 0;
 
-	for (x1 = (x); x1 < (x + 12); x1++)
+	for (y1 = (y); y1 < (y + 20); y1++) // Right Side
 	{
-		for (c = 0; c < 3; c++)
+		for (w = x; w < (x + 3); w++)
 		{
-			numbers[y + 20][x1][c] = 171;
+			for (c = 0; c < 3; c++)
+			{
+				numbers[y1][w + 10][c] = 171;
+			}
+		}
+	} y1 = 0; c = 0;
+
+	for (x1 = (x); x1 < (x + 13); x1++) // Bottom
+	{
+		for (w = y; w < (y + 3); w++)
+		{
+			for (c = 0; c < 3; c++)
+			{
+				numbers[w + 18][x1][c] = 171;
+			}
 		}
 	} x1 = 0; c = 0;
 }
@@ -585,43 +572,71 @@ void ones(int y, int x)           // Calculates one's position.
 {
 	int c;
 	int y1 = 0;
-	for (y1 = (y); y1 < (y + 20); y1++)
+	int w = 0;
+	for (y1 = (y); y1 < (y + 21); y1++)
 	{
-		for (c = 0; c < 3; c++)
+		
+		for (w = x; w < (x + 3); w++)
 		{
-			numbers[y1][x][c] = 171;
+			
+			for (c = 0; c < 3; c++)
+			{
+				
+				numbers[y1][w][c] = 171;
+			}
 		}
-	} x = 0; y = 0; y1 = 0;
+	}  w = 0; x = 0; y = 0; y1 = 0;
 }
 
 void decs(int y, int x)         // Calculates single decimal point position.
 {
 	int c = 0;
-	for (c = 0; c < 3; c++)
+	int x1 = 0;
+	int y1 = 0;
+	for (x1 = x; x1 < (x + 2); x1++)
 	{
-		numbers[y][x][c] = 171;
+		for (y1 = y; y1 < (y + 2); y1++)
+		{
+			for (c = 0; c < 3; c++)
+			{
+				numbers[y1][x1][c] = 171;
+			}
+		}
 	}
 }
 
 void dec2(int y, int x)        // Calculates double (horizontal) decimal point position.
 {
 	int c = 0;
-	for (c = 0; c < 3; c++)
+	int x1 = 0;
+	int y1 = 0;
+
+	for (x1 = x; x1 < (x + 6); x1++)
 	{
-		numbers[y][x][c] = 171;
-		numbers[y][x+4][c] = 171;
+		for (y1 = y; y1 < (y + 2); y1++)
+		{
+			for (c = 0; c < 3; c++)
+			{
+				numbers[y1][x1][c] = 171;
+			}
+		}
 	}
+
 }
 
 void dec3(int y, int x)        // Calculates triple (vertical) decimal point position.
 {
 	int c;
 	int y1 = 0;
-	for (y1 = (y); y1 < (y + 12); y1++)
+	int w = 0;
+	for (y1 = (y); y1 < (y + 10); y1++)
 	{
-		for (c = 0; c < 3; c++)
+		for (w = x; w < (x + 3); w++)
 		{
-			numbers[y1][x][c] = 171;
+			for (c = 0; c < 3; c++)
+			{
+				numbers[y1][w][c] = 171;
+			}
 		}
 	} x = 0; y = 0; y1 = 0;
 }
