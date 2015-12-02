@@ -44,11 +44,11 @@ int main()
 		{
 			char d = 'x'; // Set the restart variable back to 'x' to stop further loops.
 
-			//=============================================================
-			//                                                            
-			//           SET PPM FILE HEADER AND ARRAY TO '0'                    
-			//
-			//=============================================================
+						  //=============================================================
+						  //                                                            
+						  //           SET PPM FILE HEADER AND ARRAY TO '0'                    
+						  //
+						  //=============================================================
 
 			FILE *pfile = NULL;
 
@@ -175,60 +175,74 @@ int main()
 			//
 			//=============================================================
 
-			ones(64, 104);  //
-			decs(83, 113);  // "1.0"
-			zero(64, 120);  //
+			ones(63, 104);  //
+			decs(82, 113);  // "1.0"
+			zero(63, 120);  //
 
-			zero(224, 94);  //
-			decs(243, 113); // "0.0"
-			zero(224, 120); //
+			zero(223, 94);  //
+			decs(242, 113); // "0.0"
+			zero(223, 120); //
 
-			dec2(390, 92);  //
-			ones(380, 104); // "-1.0"
-			decs(399, 113); //
-			zero(380, 120); //
+			dec2(392, 92);  //
+			ones(382, 104); // "-1.0"
+			decs(401, 113); //
+			zero(382, 120); //
 
 			//=============================================================
 			//                                                            
 			//                       X AXIS NUMBERS             
 			//
 			//=============================================================
-			/*
-			zero(114, 38); // "0"
-			zero(114, 82); //
-			zero(114, 86); // "180"
-			ones(114, 80); //
-			decs(116, 83); //
-			dec2(114, 123); //
-			dec2(116, 123); //
-			dec2(118, 123); //
-			zero(114, 131); //
-			dec2(116, 128); // "360"
-			dec2(118, 128); //
-			decs(117, 129); //
-			ones(114, 125); //
-			ones(114, 127); //
-			zero(114, 176); //
-			dec2(114, 168); //
-			dec3(114, 167); //
-			decs(116, 168); //
-			dec3(116, 169); // "540"
-			dec2(118, 167); //
-			dec3(114, 171); //
-			dec2(117, 171); //
-			dec3(116, 173); //
-			decs(117, 174); //
-			ones(114, 215); //
-			zero(114, 221); //
-			dec2(114, 213); //
-			dec2(114, 217); //
-			decs(114, 219); // "720"
-			decs(115, 219); //
-			decs(116, 218); //
-			decs(117, 217); //
-			dec2(118, 217); //
-			decs(118, 219); //
-			*/
+			
+			zero(454, 150); // "0"
+			
+			zero(454, 328); //
+			zero(454, 346); // "180"
+			ones(454, 320); //
+			dec2(464, 331); //
+			
+			dec2(454, 493); //
+			dec2(463, 493); //
+			dec2(472, 493); //
+			ones(454, 500); // 
+			decs(463, 517); // "360"
+			decs(463, 518); //
+			dec2(463, 511); // 
+			dec2(472, 511); //
+			dec3(465, 517); //
+			ones(454, 508); //
+			zero(454, 525); //
+			
+			dec2(454, 677); //
+			dec3(454, 674); //
+			dec2(464, 674); // 
+			dec3(464, 681); // 
+			dec2(472, 674); //
+			dec2(472, 677); // "540"
+			dec3(454, 689); //
+			dec2(464, 689); //
+			dec2(464, 694); //
+			dec3(465, 695); //
+			dec3(460, 695); //
+			zero(454, 706); //
+
+			ones(454, 860); //=======================//
+			dec2(454, 853);                          //
+			dec2(454, 868);                          //
+			dec2(454, 871);                          //
+			// vv Two's Slope vv                     //
+			int two_x = 876;                         //
+			int two_y = 0;                           // 
+			for (two_y = 456; two_y < 471; two_y+=2) // "720"
+			{                                       //
+				decs(two_y, two_x);                //
+				two_x--;                          //
+			}                                    //
+			decs(454, 868);                     // 
+			dec2(472, 868);                    //
+			dec2(472, 871);                   //                
+			zero(454, 883); //===============//
+
 			//=============================================================
 			//                                                            
 			//                       WAVEFORMS         
@@ -289,7 +303,6 @@ int main()
 						}
 					}
 				}
-
 
 				// BUILD PREVIOUS SQUARE WAVEFORMS
 
@@ -352,94 +365,109 @@ int main()
 			//						 WAVEFORM KEY       
 			//
 			//=============================================================
-			/*
+			
 			{
-			int c; // Line pixel counter.
-			/*  "FIRST" */
-			/*
-			dec2(13, 218); //
-			ones(13, 217); // "F"
-			dec2(15, 218); //
-			ones(13, 221); // "I"
-			ones(13, 223); //
-			dec2(13, 224); //
-			decs(14, 225); // "R"
-			dec2(15, 224); //
-			decs(16, 224); //
-			decs(17, 225); //
-			dec2(13, 227); //
-			decs(13, 229); //
-			decs(14, 227); //
-			decs(15, 228); // "S"
-			decs(16, 229); //
-			dec2(17, 227); //
-			decs(17, 229); //
-			dec2(13, 231); //
-			decs(13, 233); // "T"
-			dec3(14, 232); //
-			decs(17, 232); //
-			/* First "=" */
-			/*
-			dec2(14, 235);
-			decs(14, 237);
-			dec2(16, 235);
-			decs(16, 237);
+				int c; // Line pixel counter.
+				int w;
+				/*  "FIRST" */
+			
+				dec2(42, 871); //
+				ones(42, 868); // "F"
+				dec2(50, 871); //
+
+				ones(42, 883); // "I"
+
+				ones(42, 891); //========================//
+				dec2(42, 894);                           //
+				dec3(42, 898);                           // 
+				dec2(50, 894);                           // 
+				decs(61, 900);                           //
+				// vv R's Slope vv                       //
+				int two_x = 894;                         // "R"
+				int two_y = 0;                           // 
+				for (two_y = 53; two_y < 61; two_y += 2) // 
+				{                                       //
+					decs(two_y, two_x);                //
+					two_x+=2;                         //
+				} //=================================//
+							   
+				dec2(42, 909); //
+				dec3(42, 906); //
+				dec2(52, 906); // "S"
+				dec3(52, 913); //
+				dec2(60, 906); //
+				dec2(60, 909); //
+				
+				ones(42, 927); //
+				dec2(42, 921); // "T"
+				dec2(42, 929); //
+			
+				/* First "=" */
+			
+				dec2(50, 941);
+				dec2(56, 941);
+			
 			/* "FINAL" */
-			/*
-			if (inp > 1)
-			{
-			ones(23, 216); //
-			dec2(23, 217); // "F"
-			dec2(25, 217); //
-			ones(23, 220); // "I"
-			ones(23, 222); //
-			decs(24, 223); //
-			decs(25, 223); // "N"
-			decs(25, 224); //
-			decs(26, 224); //
-			ones(23, 225); //
-			dec3(24, 227); //
-			decs(27, 227); //
-			decs(23, 228); // "A"
-			decs(25, 228); //
-			dec3(24, 229); //
-			decs(27, 229); //
-			ones(23, 231); // "L"
-			dec2(27, 232); //
-			/*Final "="*/
-			/*
-			dec2(24, 235);
-			decs(24, 237);
-			dec2(26, 235);
-			decs(26, 237);
-			/*Final Line*/
-			/*
-			for (c = 0; c < 15; c++)
-			{
-			numbers[25][239 + c][0] = 245; //
-			numbers[25][239 + c][1] = 245; // Line sample of the final waveform. This is always yellow.
-			numbers[25][239 + c][2] = 60;  //
-			}
-			/*First Line*/
-			/*
-			for (c = 0; c < 15; c++)
-			{
-			numbers[15][239 + c][0] = r1[1]; //
-			numbers[15][239 + c][1] = g1[1]; // Line sample of the first waveform if > 1 has been displayed.
-			numbers[15][239 + c][2] = b1[1]; //
-			} c = 0;
-			}
-			else
-			{
-			/*First Line*/
-			/*
-			for (c = 0; c < 15; c++)
-			{
-			numbers[15][239 + c][0] = 245; //
-			numbers[15][239 + c][1] = 245; // Line sample of the first waveform if only 1 has been displayed.
-			numbers[15][239 + c][2] = 60;  //
-			} c = 0;
-			}
+			
+				if (inp > 1)
+				{
+					/*
+					ones(23, 216); //
+					dec2(23, 217); // "F"
+					dec2(25, 217); //
+					ones(23, 220); // "I"
+					ones(23, 222); //
+					decs(24, 223); //
+					decs(25, 223); // "N"
+					decs(25, 224); //
+					decs(26, 224); //
+					ones(23, 225); //
+					dec3(24, 227); //
+					decs(27, 227); //
+					decs(23, 228); // "A"
+					decs(25, 228); //
+					dec3(24, 229); //
+					decs(27, 229); //
+					ones(23, 231); // "L"
+					dec2(27, 232); //
+					/*Final "="*/
+					/*
+					dec2(24, 235);
+					decs(24, 237);
+					dec2(26, 235);
+					decs(26, 237);
+					/*Final Line*/
+					/*
+					for (c = 0; c < 15; c++)
+					{
+					numbers[25][239 + c][0] = 245; //
+					numbers[25][239 + c][1] = 245; // Line sample of the final waveform. This is always yellow.
+					numbers[25][239 + c][2] = 60;  //
+					}*/
+					/*First Line*/
+					for (w = 53; w < 56; w++)
+					{
+						for (c = 0; c < 50; c++)
+						{
+							numbers[w][962 + c][0] = r1[1]; //
+							numbers[w][962 + c][1] = g1[1]; // Line sample of the first waveform if > 1 has been displayed.
+							numbers[w][962 + c][2] = b1[1]; //
+						} c = 0;
+					}
+				}
+				else
+				{
+					/*First Line*/
+					for (w = 53; w < 56; w++)
+					{
+						for (c = 0; c < 15; c++)
+						{
+							numbers[w][962 + c][0] = 245; //
+							numbers[w][962 + c][1] = 245; // Line sample of the first waveform if only 1 has been displayed.
+							numbers[w][962 + c][2] = 60;  //
+						} c = 0;
+					}
+				}
 
 			/* "KEY"*/
 			/*
@@ -477,14 +505,14 @@ int main()
 			numbers[30][c][0] = 230; //
 			numbers[30][c][1] = 230; // Horizontal "off-white" colour, key boundary line.
 			numbers[30][c][2] = 230; //
-			} c = 0;
+			} c = 0;*/
 			}
 			//=============================================================
 			//
 			//               WRITE DATA FROM ARRAY TO FILE
 			//
 			//=============================================================
-			*/
+			
 			int a, b, c;                         /* Drawing the array in the console and writing the same data to the
 												 .ppm file...*/
 			for (a = 0; a < height; a++)
@@ -575,13 +603,13 @@ void ones(int y, int x)           // Calculates one's position.
 	int w = 0;
 	for (y1 = (y); y1 < (y + 21); y1++)
 	{
-		
+
 		for (w = x; w < (x + 3); w++)
 		{
-			
+
 			for (c = 0; c < 3; c++)
 			{
-				
+
 				numbers[y1][w][c] = 171;
 			}
 		}
@@ -611,9 +639,9 @@ void dec2(int y, int x)        // Calculates double (horizontal) decimal point p
 	int x1 = 0;
 	int y1 = 0;
 
-	for (x1 = x; x1 < (x + 6); x1++)
+	for (x1 = x; x1 < (x + 7); x1++)
 	{
-		for (y1 = y; y1 < (y + 2); y1++)
+		for (y1 = y; y1 < (y + 3); y1++)
 		{
 			for (c = 0; c < 3; c++)
 			{
