@@ -3,7 +3,8 @@
 // Copyright © 2015. All rights reserved.
 //
 
-// **************** HIGH RESOLUTION VERSION *******************
+//***************** HIGH RESOLUTION VERSION *******************
+//*****************       512 x 1024        *******************
 
 //=============================================================
 //                                                            
@@ -46,11 +47,11 @@ int main()
 		{
 			char d = 'x'; // Set the restart variable back to 'x' to stop further loops.
 
-						  //=============================================================
-						  //                                                            
-						  //           SET PPM FILE HEADER AND ARRAY TO '0'                    
-						  //
-						  //=============================================================
+			//=============================================================
+			//                                                            
+			//           SET PPM FILE HEADER AND ARRAY TO '0'                    
+			//
+			//=============================================================
 
 			FILE *pfile = NULL;
 
@@ -85,7 +86,6 @@ int main()
 			//=============================================================
 
 			/*Set Y Axis Line*/
-
 			{
 				int y, w;           // y = y axis level, w = axis line width (2px).
 
@@ -102,7 +102,6 @@ int main()
 			}
 
 			/*Set X Axis Line*/
-
 			{
 				int x, w;           // x = x axis level, w = axis line width (2px).
 
@@ -119,7 +118,6 @@ int main()
 			}
 
 			/*Set X Axis Centre Line*/
-
 			{
 				int x;           // x = x axis level.
 
@@ -140,7 +138,6 @@ int main()
 			//=============================================================
 
 			/*Y Axis Ticks*/
-
 			{
 				int x, c;
 				for (x = 144; x < 152; x++)
@@ -155,7 +152,6 @@ int main()
 			}
 
 			/*X Axis Ticks */
-
 			{
 				int y, c;
 				for (y = 440; y < 448; y++)
@@ -272,7 +268,6 @@ int main()
 				else { printf("Please Wait..."); }
 
 				// BUILD PREVIOUS SINE WAVEFORMS
-
 				{
 					for (c = inp; c > 0; c--)
 					{
@@ -299,7 +294,6 @@ int main()
 				}
 
 				// BUILD PREVIOUS SQUARE WAVEFORMS
-
 				{
 					for (c = inp; c > 0; c--)
 					{
@@ -333,7 +327,6 @@ int main()
 				}
 
 				// BUILD FINAL WAVEFORM
-
 				int s = 0;
 				j = ((2 * inp) - 1);
 
@@ -396,7 +389,6 @@ int main()
 				dec2(56, 936);
 			
 				/* "FINAL" */
-			
 				if (inp > 1)
 				{
 					ones(82, 863);          //
@@ -423,7 +415,7 @@ int main()
 					dec2(90, 936);
 					dec2(96, 936);
 
-					/*Final Line*/
+					/*Final Sample Line*/
 					for (w = 93; w < 96; w++)
 					{
 						for (c = 0; c < 55; c++)
@@ -434,7 +426,7 @@ int main()
 						}
 					}
 
-					/*First Line*/
+					/*First Sample Line*/
 					for (w = 53; w < 56; w++)
 					{
 						for (c = 0; c < 55; c++)
@@ -447,7 +439,7 @@ int main()
 				}
 				else
 				{
-					/*First Line*/
+					/*First Sample Line*/
 					for (w = 53; w < 56; w++)
 					{
 						for (c = 0; c < 55; c++)
