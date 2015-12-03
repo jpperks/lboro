@@ -3,7 +3,8 @@
 // Copyright © 2015. All rights reserved.
 //
 
-// ***************** LOW RESOLUTION VERSION *******************
+//****************** LOW RESOLUTION VERSION *******************
+//******************       128 x 256        *******************
 
 //=============================================================
 //                                                            
@@ -44,11 +45,11 @@ int main()
 		{
 			char d = 'x'; // Set the restart variable back to 'x' to stop further loops.
 
-						  //=============================================================
-						  //                                                            
-						  //           SET PPM FILE HEADER AND ARRAY TO '0'                    
-						  //
-						  //=============================================================
+			//=============================================================
+			//                                                            
+			//           SET PPM FILE HEADER AND ARRAY TO '0'                    
+			//
+			//=============================================================
 
 			FILE *pfile = NULL;
 
@@ -83,7 +84,6 @@ int main()
 			//=============================================================
 
 			/*Set Y Axis Line*/
-
 			{
 				int y, w;           // y = y axis level, w = axis line width (2px).
 
@@ -100,7 +100,6 @@ int main()
 			}
 
 			/*Set X Axis Line*/
-
 			{
 				int x, w;           // x = x axis level, w = axis line width (2px).
 
@@ -117,7 +116,6 @@ int main()
 			}
 
 			/*Set X Axis Centre Line*/
-
 			{
 				int x;           // x = x axis level.
 
@@ -138,7 +136,6 @@ int main()
 			//=============================================================
 
 			/*Y Axis Ticks*/
-
 			{
 				int x, c;
 				for (x = 35; x < 37; x++)
@@ -153,7 +150,6 @@ int main()
 			}
 
 			/*X Axis Ticks */
-
 			{
 				int y, c;
 				for (y = 111; y < 113; y++)
@@ -188,11 +184,11 @@ int main()
 			decs(99, 28); //
 			zero(95, 30); //
 
-						  //=============================================================
-						  //                                                            
-						  //                       X AXIS NUMBERS             
-						  //
-						  //=============================================================
+			//=============================================================
+			//                                                            
+			//                       X AXIS NUMBERS             
+			//
+		    //=============================================================
 
 			zero(114, 38); // "0"
 
@@ -233,11 +229,11 @@ int main()
 			dec2(118, 217); //
 			decs(118, 219); //
 
-							//=============================================================
-							//                                                            
-							//                       WAVEFORMS         
-							//
-							//=============================================================
+			//=============================================================
+			//                                                            
+			//                       WAVEFORMS         
+			//
+			//=============================================================
 
 			int inp, r1[500], g1[500], b1[500];
 			{
@@ -268,9 +264,6 @@ int main()
 				else { printf("Please Wait..."); }
 
 				// BUILD PREVIOUS SINE WAVEFORMS
-
-				// BUILD PREVIOUS SINE WAVEFORMS
-
 				{
 					for (c = inp; c > 0; c--)
 					{
@@ -296,7 +289,6 @@ int main()
 				}
 
 				// BUILD PREVIOUS SQUARE WAVEFORMS
-
 				{
 					for (c = inp; c > 0; c--)
 					{
@@ -330,7 +322,6 @@ int main()
 				}
 
 				// BUILD FINAL SQAURE WAVEFORM
-
 				int s = 0;
 				j = ((2 * inp) - 1);
 
@@ -360,8 +351,7 @@ int main()
 			{
 				int c; // Line pixel counter.
 
-					   /*  "FIRST" */
-
+				/*  "FIRST" */
 				dec2(13, 218); //
 				ones(13, 217); // "F"
 				dec2(15, 218); //
@@ -388,8 +378,7 @@ int main()
 				dec3(14, 232); //
 				decs(17, 232); //
 
-							   /* First "=" */
-
+				/* First "=" */
 				dec2(14, 235);
 				decs(14, 237);
 				dec2(16, 235);
@@ -397,7 +386,6 @@ int main()
 
 
 				/* "FINAL" */
-
 				if (inp > 1)
 				{
 					ones(23, 216); //
@@ -423,15 +411,13 @@ int main()
 					ones(23, 231); // "L"
 					dec2(27, 232); //
 
-								   /*Final "="*/
-
+					/*Final "="*/
 					dec2(24, 235);
 					decs(24, 237);
 					dec2(26, 235);
 					decs(26, 237);
 
-					/*Final Line*/
-
+					/*Final Sample Line*/
 					for (c = 0; c < 15; c++)
 					{
 						numbers[25][239 + c][0] = 245; //
@@ -439,8 +425,7 @@ int main()
 						numbers[25][239 + c][2] = 60;  //
 					}
 
-					/*First Line*/
-
+					/*First Sample Line*/
 					for (c = 0; c < 15; c++)
 					{
 						numbers[15][239 + c][0] = r1[1]; //
@@ -450,8 +435,7 @@ int main()
 				}
 				else
 				{
-					/*First Line*/
-
+					/*First Sample Line*/
 					for (c = 0; c < 15; c++)
 					{
 						numbers[15][239 + c][0] = 245; //
@@ -461,7 +445,6 @@ int main()
 				}
 
 				/* "KEY"*/
-
 				ones(3, 226); //
 				decs(5, 227); //
 				decs(4, 228); // "K"
@@ -480,6 +463,7 @@ int main()
 				decs(3, 237); //
 				decs(4, 237); //
 
+				/* "KEY" Underline */
 				for (c = 224; c < 239; c++)
 				{
 					numbers[8][c][0] = 171;
@@ -488,7 +472,6 @@ int main()
 				} c = 0;
 
 				/* Outer Lines*/
-
 				for (c = 0; c < 31; c++)
 				{
 					numbers[c][210][0] = 230; //
