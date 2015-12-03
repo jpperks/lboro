@@ -33,6 +33,8 @@ void ones(int, int); // Calculates one's position.
 void decs(int, int); // Calculates single decimal point position.
 void dec2(int, int); // Calculates double (horizontal) decimal point position.
 void dec3(int, int); // Calculates triple (vertical) decimal point position.
+void lslope(int, int, int, int); // Calculates left (downwards) slope.
+void rslope(int, int, int, int); // Calculates right (downwards) slope.
 int numbers[height][width][3]; // Our main array to store pixel values.
 
 int main()
@@ -226,22 +228,14 @@ int main()
 			dec3(460, 695); //
 			zero(454, 706); //
 
-			ones(454, 860); //=======================//
-			dec2(454, 853);                          //
-			dec2(454, 868);                          //
-			dec2(454, 871);                          //
-			// vv Two's Slope vv                     //
-			int two_x = 876;                         //
-			int two_y = 0;                           // 
-			for (two_y = 456; two_y < 471; two_y+=2) // "720"
-			{                                       //
-				decs(two_y, two_x);                //
-				two_x--;                          //
-			}                                    //
-			decs(454, 868);                     // 
-			dec2(472, 868);                    //
-			dec2(472, 871);                   //                
-			zero(454, 883); //===============//
+			ones(454, 860);       //
+			dec2(454, 853);       //                     
+			dec2(454, 868);       //                     
+			dec2(454, 871);       //
+			lslope(456, 876, 15, 0); // "720"  
+			dec2(472, 868);       //                
+			dec2(472, 871);       //                             
+			zero(454, 883);       //
 
 			//=============================================================
 			//                                                            
@@ -370,88 +364,84 @@ int main()
 				int c; // Line pixel counter.
 				int w;
 				/*  "FIRST" */
-			
-				dec2(42, 871); //
-				ones(42, 868); // "F"
-				dec2(50, 871); //
+				dec2(42, 871);         //
+				ones(42, 868);         // "F"
+				dec2(50, 871);         //
 
-				ones(42, 883); // "I"
+				ones(42, 883);         // "I"
 
-				ones(42, 891); //========================//
-				dec2(42, 894);                           //
-				dec3(42, 898);                           // 
-				dec2(50, 894);                           // 
-				decs(61, 900);                           //
-				// vv R's Slope vv                       //
-				int two_x = 894;                         // "R"
-				int two_y = 0;                           // 
-				for (two_y = 53; two_y < 61; two_y += 2) // 
-				{                                       //
-					decs(two_y, two_x);                //
-					two_x+=2;                         //
-				} //=================================//
-							   
-				dec2(42, 909); //
-				dec3(42, 906); //
-				dec2(52, 906); // "S"
-				dec3(52, 913); //
-				dec2(60, 906); //
-				dec2(60, 909); //
+				ones(42, 891);         //
+				dec2(42, 894);         //
+				dec3(42, 898);         // 
+				dec2(50, 894);         // 
+				decs(59, 898);         // "R"
+				decs(57, 896);         //
+				decs(55, 894);         //
+				decs(61, 900);         //
+				rslope(53, 894, 8, 1); // 
 				
-				ones(42, 927); //
-				dec2(42, 921); // "T"
-				dec2(42, 929); //
+				dec2(42, 909);         //
+				dec3(42, 906);         //
+				dec2(52, 906);         // "S"
+				dec3(52, 913);         //
+				dec2(60, 906);         //
+				dec2(60, 909);         //
+				
+				ones(42, 924);         //
+				dec2(42, 921);         // "T"
+				dec2(42, 924);         //
 			
 				/* First "=" */
+				dec2(50, 936);
+				dec2(56, 936);
 			
-				dec2(50, 941);
-				dec2(56, 941);
-			
-			/* "FINAL" */
+				/* "FINAL" */
 			
 				if (inp > 1)
 				{
-					/*
-					ones(23, 216); //
-					dec2(23, 217); // "F"
-					dec2(25, 217); //
-					ones(23, 220); // "I"
-					ones(23, 222); //
-					decs(24, 223); //
-					decs(25, 223); // "N"
-					decs(25, 224); //
-					decs(26, 224); //
-					ones(23, 225); //
-					dec3(24, 227); //
-					decs(27, 227); //
-					decs(23, 228); // "A"
-					decs(25, 228); //
-					dec3(24, 229); //
-					decs(27, 229); //
-					ones(23, 231); // "L"
-					dec2(27, 232); //
+					ones(82, 863);          //
+					dec2(82, 866);          // "F"
+					dec2(90, 866);          //
+
+					ones(82, 878);          // "I"
+					
+					ones(82, 886);          //
+					ones(82, 897);          // "N"                     
+					rslope(82, 888, 20, 0); //
+
+					dec3(85, 905);          // 
+					dec3(93, 905);          //
+					dec2(82, 907);          // "A"
+					dec2(92, 907);          //
+					dec3(85, 913);          //
+					dec3(93, 913);          //
+
+					ones(82, 921);          // "L"
+					dec2(100, 924);         //
+
 					/*Final "="*/
-					/*
-					dec2(24, 235);
-					decs(24, 237);
-					dec2(26, 235);
-					decs(26, 237);
+					dec2(90, 936);
+					dec2(96, 936);
+
 					/*Final Line*/
-					/*
-					for (c = 0; c < 15; c++)
+					for (w = 93; w < 96; w++)
 					{
-					numbers[25][239 + c][0] = 245; //
-					numbers[25][239 + c][1] = 245; // Line sample of the final waveform. This is always yellow.
-					numbers[25][239 + c][2] = 60;  //
-					}*/
+						for (c = 0; c < 55; c++)
+						{
+							numbers[w][953 + c][0] = 245; //
+							numbers[w][953 + c][1] = 245; // Line sample of the final waveform. This is always yellow.
+							numbers[w][953 + c][2] = 60;  //
+						}
+					}
+
 					/*First Line*/
 					for (w = 53; w < 56; w++)
 					{
-						for (c = 0; c < 50; c++)
+						for (c = 0; c < 55; c++)
 						{
-							numbers[w][962 + c][0] = r1[1]; //
-							numbers[w][962 + c][1] = g1[1]; // Line sample of the first waveform if > 1 has been displayed.
-							numbers[w][962 + c][2] = b1[1]; //
+							numbers[w][953 + c][0] = r1[1]; //
+							numbers[w][953 + c][1] = g1[1]; // Line sample of the first waveform if > 1 has been displayed.
+							numbers[w][953 + c][2] = b1[1]; //
 						} c = 0;
 					}
 				}
@@ -460,52 +450,58 @@ int main()
 					/*First Line*/
 					for (w = 53; w < 56; w++)
 					{
-						for (c = 0; c < 15; c++)
+						for (c = 0; c < 55; c++)
 						{
-							numbers[w][962 + c][0] = 245; //
-							numbers[w][962 + c][1] = 245; // Line sample of the first waveform if only 1 has been displayed.
-							numbers[w][962 + c][2] = 60;  //
+							numbers[w][953 + c][0] = 245; //
+							numbers[w][953 + c][1] = 245; // Line sample of the first waveform if only 1 has been displayed.
+							numbers[w][953 + c][2] = 60;  //
 						} c = 0;
 					}
 				}
 
-			/* "KEY"*/
-			/*
-			ones(3, 226); //
-			decs(5, 227); //
-			decs(4, 228); // "K"
-			decs(3, 229); //
-			decs(6, 228); //
-			decs(7, 229); //
-			ones(3, 231); //
-			dec2(3, 232); // "E"
-			dec2(5, 232); //
-			dec2(7, 232); //
-			decs(3, 235); //
-			decs(4, 235); //
-			dec3(5, 236); // "Y"
-			decs(3, 237); //
-			decs(4, 237); //
-			for (c = 224; c < 239; c++)
-			{
-			numbers[8][c][0] = 171;
-			numbers[8][c][1] = 171;
-			numbers[8][c][2] = 171;
-			} c = 0;
-			/* Outer Lines*/
-			/*
-			for (c = 0; c < 31; c++)
-			{
-			numbers[c][210][0] = 230; //
-			numbers[c][210][1] = 230; // Vertical "off-white" colour, key boundary line.
-			numbers[c][210][2] = 230; //
-			} c = 0;
-			for (c = 210; c < 256; c++)
-			{
-			numbers[30][c][0] = 230; //
-			numbers[30][c][1] = 230; // Horizontal "off-white" colour, key boundary line.
-			numbers[30][c][2] = 230; //
-			} c = 0;*/
+				/* "KEY"*/
+				ones(9, 914);          // 
+				lslope(9, 924, 9, 1);  // "K"
+				rslope(20, 916, 9, 1); //
+				decs(19, 916);         //
+			
+				ones(9, 931);          //
+				dec2(9, 934);          // "E"
+				dec2(18, 934);         //
+				dec2(27, 934);         //
+
+				rslope(9, 946, 10, 0); //
+				lslope(9, 955, 10, 0); // "Y"
+				dec3(20, 950);         //
+				dec3(18, 950);         // 
+			
+				/* "KEY" Underline */
+				for (c = 910; c < 959; c++)
+				{
+				numbers[31][c][0] = 171;
+				numbers[31][c][1] = 171;
+				numbers[31][c][2] = 171;
+				} c = 0;
+
+				/* Outer Lines*/
+				for (c = 0; c < 110; c++)
+				{
+					for (w = 846; w < 848; w++)
+					{
+						numbers[c][w][0] = 230; //
+						numbers[c][w][1] = 230; // Vertical "off-white" colour, key boundary line.
+						numbers[c][w][2] = 230; //
+					}
+				} c = 0; w = 0;
+				for (c = 846; c < 1023; c++)
+				{
+					for (w = 108; w < 110; w++)
+					{
+						numbers[w][c][0] = 230; //
+						numbers[w][c][1] = 230; // Horizontal "off-white" colour, key boundary line.
+						numbers[w][c][2] = 230; //
+					}
+				} c = 0; w = 0;
 			}
 			//=============================================================
 			//
@@ -667,4 +663,40 @@ void dec3(int y, int x)        // Calculates triple (vertical) decimal point pos
 			}
 		}
 	} x = 0; y = 0; y1 = 0;
+}
+
+void lslope(int y, int x, int d, int b)     // Calculates left (downwards) slope.
+{
+	                         
+	int two_y = 0;
+	int two_x = x;
+	int depth = d;
+	int big = b;
+	for (two_y = y; two_y < (y+depth); two_y+=2) 
+	{
+		decs(two_y, two_x);               
+		if (big == 1)
+		{
+			two_x -= 2;
+		}
+		else { two_x--; }
+	}                                   
+}
+
+void rslope(int y, int x, int d, int b)     // Calculates right (downwards) slope.
+{
+
+	int two_y = 0;
+	int two_x = x;
+	int depth = d;
+	int big = b;
+	for (two_y = y; two_y < (y + depth); two_y += 2)
+	{
+		decs(two_y, two_x);
+		if (big == 1)
+		{
+			two_x += 2;
+		}
+		else { two_x++; }
+	}
 }
