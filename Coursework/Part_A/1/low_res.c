@@ -16,8 +16,8 @@
 #define height 128 //
 #define width 256  // Set the height, width and colour depth up here.
 #define colour 255 //
-#include <stdio.h>
-#include <math.h>
+#include <stdio.h> // Main input/output libary.
+#include <math.h> // Required for waveform calculations.
 #include <conio.h> // Required for quicker user input using _getch.
 #include <time.h> // Required for colour generator.
 #include <stdlib.h> // Required for colour generator.
@@ -51,18 +51,19 @@ int main()
 			//
 			//=============================================================
 
-			FILE *pfile = NULL;
+			FILE *pfile = NULL; // Create file pointer and set to NULL.
 
-			if ((pfile = fopen("myimage.ppm", "w")) == NULL)
+			if ((pfile = fopen("myimage.ppm", "w")) == NULL) /* Checks if the .pmm file can be opened successfully. 
+															 Returns -1 if there is a problem.*/
 			{
 				printf("\nThere was a problem opening '%s', please contact support.", "myimage.ppm");
 				return -1;
 			}
 
-			fprintf(pfile, "P3\n");
-			fprintf(pfile, "# myimage.ppm\n");
-			fprintf(pfile, "%d %d\n", width, height);
-			fprintf(pfile, "%d\n", colour);
+			fprintf(pfile, "P3\n"); // Identify PPM file type.
+			fprintf(pfile, "# myimage.ppm\n"); // Writes confirmation comment of the file name.
+			fprintf(pfile, "%d %d\n", width, height); // Writes the width and height of the array.
+			fprintf(pfile, "%d\n", colour); // Writes the colour depth level (always 255).
 
 			int i, j, z;     // Setting all the values of the array i = Y axis j = X axis z = Colour type (RGB).
 
@@ -72,7 +73,7 @@ int main()
 				{
 					for (z = 0; z < 3; z++)
 					{
-						numbers[i][j][z] = 0;
+						numbers[i][j][z] = 0; // Sets the whole array to 0.
 					}
 				}
 			}
@@ -85,8 +86,7 @@ int main()
 
 			/*Set Y Axis Line*/
 			{
-				int y, w;           // y = y axis level, w = axis line width (2px).
-
+				int y, w;           // y = y axis level, w = axis line width.
 				for (y = 8; y < 109; y++)
 				{
 					for (w = 37; w < 39; w++)
@@ -101,8 +101,7 @@ int main()
 
 			/*Set X Axis Line*/
 			{
-				int x, w;           // x = x axis level, w = axis line width (2px).
-
+				int x, w;           // x = x axis level, w = axis line width.
 				for (x = 37; x < 219; x++)
 				{
 					for (w = 109; w < 111; w++)
@@ -118,7 +117,6 @@ int main()
 			/*Set X Axis Centre Line*/
 			{
 				int x;           // x = x axis level.
-
 				for (x = 39; x < 219; x++)
 				{
 
@@ -235,7 +233,7 @@ int main()
 			//
 			//=============================================================
 
-			int inp, r1[500], g1[500], b1[500];
+			int inp, r1[999], g1[999], b1[999]; // Previous waveform colour save arrays.
 			{
 				int t = 0;
 				int offt, offs, ap, j, z, c, r, g, b;
@@ -296,9 +294,9 @@ int main()
 						g = (rand() % 150) + 50; // Create random colour between 0 & 200 for each waveform.
 						b = (rand() % 150) + 50; //
 
-						r1[c] = r;
-						g1[c] = g;
-						b1[c] = b;
+						r1[c] = r; //
+						g1[c] = g; // Stores colour for each wave to fetch later...
+						b1[c] = b; //
 
 						int s = 0;
 						j = ((2 * c) - 1);
@@ -444,7 +442,7 @@ int main()
 					} c = 0;
 				}
 
-				/* "KEY"*/
+				/* "KEY" */
 				ones(3, 226); //
 				decs(5, 227); //
 				decs(4, 228); // "K"
@@ -493,8 +491,7 @@ int main()
 			//
 			//=============================================================
 
-			int a, b, c;                         /* Drawing the array in the console and writing the same data to the
-												 .ppm file...*/
+			int a, b, c;                								
 			for (a = 0; a < height; a++)
 			{
 				for (b = 0; b < width; b++)
@@ -505,7 +502,7 @@ int main()
 						fprintf(pfile, " ");
 					}fprintf(pfile, "   ");
 				}fprintf(pfile, "\n\n");
-			}	                              // The file can be found here...\Visual Studio 20xx\Projects\ProjectName\ProjectName\myimage.ppm
+			}	                              // The file can be found here...\executable_folder\myimage.ppm
 			printf("\nMade Changes! Look for 'myimage.pmm' in the project folder.\n\n");
 			fclose(pfile);
 		}
@@ -514,7 +511,6 @@ int main()
 		d = _getch();
 
 	} while (d == 'r' || d == 'R');
-
 	printf("\n\n");
 	printf("Goodbye! ");
 }
