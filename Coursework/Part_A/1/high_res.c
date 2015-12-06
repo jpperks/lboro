@@ -49,23 +49,9 @@ int main()
 
 			//=============================================================
 			//                                                            
-			//           SET PPM FILE HEADER AND ARRAY TO '0'                    
+			//                      SET ARRAY TO 0                     
 			//
 			//=============================================================
-
-			FILE *pfile = NULL; // Create file pointer and set to NULL.
-
-			if ((pfile = fopen("myimage.ppm", "w")) == NULL) /* Checks if the .pmm file can be opened successfully. 
-															 Returns -1 if there is a problem.*/
-			{                                                     
-				printf("\nThere was a problem opening '%s', please contact support.", "myimage.ppm");
-				return -1;
-			}
-
-			fprintf(pfile, "P3\n"); // Identify PPM file type.
-			fprintf(pfile, "# myimage.ppm\n"); // Writes confirmation comment of the file name.
-			fprintf(pfile, "%d %d\n", width, height); // Writes the width and height of the array.
-			fprintf(pfile, "%d\n", colour); // Writes the colour depth level (always 255).
 
 			int i, j, z;     // Setting all the values of the array i = Y axis j = X axis z = Colour type (RGB).
 
@@ -493,6 +479,28 @@ int main()
 					}
 				} c = 0; w = 0;
 			}
+
+			//=============================================================
+			//                                                            
+			//                 OPEN AND SET PPM FILE HEADER                   
+			//
+			//=============================================================
+
+			FILE *pfile = NULL; // Create file pointer and set to NULL.
+
+			if ((pfile = fopen("myimage.ppm", "w")) == NULL) /* Checks if the .pmm file can be opened successfully.
+															 Returns -1 if there is a problem.*/
+			{
+				printf("\nThere was a problem opening '%s', please contact support.", "myimage.ppm");
+				return -1;
+			}
+
+			fprintf(pfile, "P3\n"); // Identify PPM file type.
+			fprintf(pfile, "# myimage.ppm\n"); // Writes confirmation comment of the file name.
+			fprintf(pfile, "%d %d\n", width, height); // Writes the width and height of the array.
+			fprintf(pfile, "%d\n", colour); // Writes the colour depth level (always 255).
+
+
 			//=============================================================
 			//
 			//               WRITE DATA FROM ARRAY TO FILE
