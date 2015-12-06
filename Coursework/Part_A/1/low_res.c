@@ -47,23 +47,9 @@ int main()
 
 			//=============================================================
 			//                                                            
-			//           SET PPM FILE HEADER AND ARRAY TO '0'                    
+			//                      SET ARRAY TO 0                     
 			//
 			//=============================================================
-
-			FILE *pfile = NULL; // Create file pointer and set to NULL.
-
-			if ((pfile = fopen("myimage.ppm", "w")) == NULL) /* Checks if the .pmm file can be opened successfully. 
-															 Returns -1 if there is a problem.*/
-			{
-				printf("\nThere was a problem opening '%s', please contact support.", "myimage.ppm");
-				return -1;
-			}
-
-			fprintf(pfile, "P3\n"); // Identify PPM file type.
-			fprintf(pfile, "# myimage.ppm\n"); // Writes confirmation comment of the file name.
-			fprintf(pfile, "%d %d\n", width, height); // Writes the width and height of the array.
-			fprintf(pfile, "%d\n", colour); // Writes the colour depth level (always 255).
 
 			int i, j, z;     // Setting all the values of the array i = Y axis j = X axis z = Colour type (RGB).
 
@@ -182,11 +168,11 @@ int main()
 			decs(99, 28); //
 			zero(95, 30); //
 
-			//=============================================================
-			//                                                            
-			//                       X AXIS NUMBERS             
-			//
-		    //=============================================================
+						  //=============================================================
+						  //                                                            
+						  //                       X AXIS NUMBERS             
+						  //
+						  //=============================================================
 
 			zero(114, 38); // "0"
 
@@ -227,11 +213,11 @@ int main()
 			dec2(118, 217); //
 			decs(118, 219); //
 
-			//=============================================================
-			//                                                            
-			//                       WAVEFORMS         
-			//
-			//=============================================================
+							//=============================================================
+							//                                                            
+							//                       WAVEFORMS         
+							//
+							//=============================================================
 
 			int inp, r1[999], g1[999], b1[999]; // Previous waveform colour save arrays.
 			{
@@ -291,7 +277,7 @@ int main()
 					for (c = inp; c > 0; c--)
 					{
 						r = (rand() % 150) + 50; //
-						g = (rand() % 150) + 50; // Create random colour between 0 & 200 for each waveform.
+						g = (rand() % 150) + 50; // Create random colour between 50 & 200 for each waveform.
 						b = (rand() % 150) + 50; //
 
 						r1[c] = r; //
@@ -349,7 +335,7 @@ int main()
 			{
 				int c; // Line pixel counter.
 
-				/*  "FIRST" */
+					   /*  "FIRST" */
 				dec2(13, 218); //
 				ones(13, 217); // "F"
 				dec2(15, 218); //
@@ -376,7 +362,7 @@ int main()
 				dec3(14, 232); //
 				decs(17, 232); //
 
-				/* First "=" */
+							   /* First "=" */
 				dec2(14, 235);
 				decs(14, 237);
 				dec2(16, 235);
@@ -409,7 +395,7 @@ int main()
 					ones(23, 231); // "L"
 					dec2(27, 232); //
 
-					/*Final "="*/
+								   /*Final "="*/
 					dec2(24, 235);
 					decs(24, 237);
 					dec2(26, 235);
@@ -461,7 +447,7 @@ int main()
 				decs(3, 237); //
 				decs(4, 237); //
 
-				/* "KEY" Underline */
+							  /* "KEY" Underline */
 				for (c = 224; c < 239; c++)
 				{
 					numbers[8][c][0] = 171;
@@ -487,11 +473,31 @@ int main()
 
 			//=============================================================
 			//                                                            
+			//               OPEN AND SET PPM FILE HEADER                     
+			//
+			//=============================================================
+
+			FILE *pfile = NULL; // Create file pointer and set to NULL.
+
+			if ((pfile = fopen("myimage.ppm", "w")) == NULL) /* Checks if the .pmm file can be opened successfully.
+															 Returns -1 if there is a problem.*/
+			{
+				printf("\nThere was a problem opening '%s', please contact support.", "myimage.ppm");
+				return -1;
+			}
+
+			fprintf(pfile, "P3\n"); // Identify PPM file type.
+			fprintf(pfile, "# myimage.ppm\n"); // Writes confirmation comment of the file name.
+			fprintf(pfile, "%d %d\n", width, height); // Writes the width and height of the array.
+			fprintf(pfile, "%d\n", colour); // Writes the colour depth level (always 255).
+
+			//=============================================================
+			//                                                            
 			//               WRITE DATA FROM ARRAY TO FILE        
 			//
 			//=============================================================
 
-			int a, b, c;                								
+			int a, b, c;
 			for (a = 0; a < height; a++)
 			{
 				for (b = 0; b < width; b++)
