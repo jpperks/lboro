@@ -1,0 +1,16 @@
+data/option/ccsbcs.c.i
+data/ff.c.i
+data/FATFileHandle.h.i
+data/MemFileSystem.h.i
+data/integer.h.i
+data/diskio.h.i
+data/FATDirHandle.h.i
+data/FATFileSystem.h.i
+data/FATFileSystem.cpp.i
+data/diskio.c.i
+data/ff.cpp.i
+data/FATDirHandle.cpp.i
+data/diskio.cpp.i
+data/FATFileHandle.cpp.i
+data/ffconf.h.i
+data/ff.h.i
